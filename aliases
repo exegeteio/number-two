@@ -1,0 +1,7 @@
+# Aliases for running commands within the app.
+
+alias rails="docker-compose run --rm web bundle exec rails"
+alias bundle="docker-compose run --rm web bundle"
+alias rake="docker-compose run --rm web bundle exec rake"
+alias start="docker-compose up --build --force-recreate"
+alias stop="docker-compose down"
