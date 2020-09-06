@@ -31,3 +31,7 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+.*.swp
+
+vendor/bundle
+
