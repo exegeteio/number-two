@@ -1,0 +1,45 @@
+// Place all the styles related to the overlay controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@mixin overlay {
+  position: absolute;
+}
+
+#ask_overlay {
+  @include overlay;
+  left: 1em;
+  bottom: 1em;
+  max-width: 40%;
+  background-color: white;
+}
+
+#chat_overlay {
+  @include overlay;
+  top: 1em;
+  right: 1em;
+  max-width: 576px;
+  .message-list {
+    display: flex;
+    flex-direction: column;
+    .message {
+      display: flex;
+      margin-bottom: 1rem;
+      align-self: flex-end;
+      &:last-child {
+        margin-bottom: 0.5rem;
+      }
+      i {
+        align-self: flex-end;
+        font-size: 48px;
+        line-height: 48px;
+        margin-left: .75rem;
+      }
+      &:nth-child(even), .message-right {
+      }
+      .nes-balloon {
+        padding: 0.25rem;
+      }
+    }
+  }
+}
