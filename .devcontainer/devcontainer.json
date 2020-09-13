@@ -1,15 +1,19 @@
 // For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.134.1/containers/ruby-rails
 {
-	"name": "Ruby on Rails",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"args": { 
-			// Update 'VARIANT' to pick a Ruby version: 2, 2.7, 2.6, 2.5
-			"VARIANT": "2.7",
-			"NODE_VERSION": "lts/*"
-		}
-	},
+	// "name": "Ruby on Rails",
+	// "build": {
+	// 	"dockerfile": "Dockerfile",
+	// 	"args": { 
+	// 		// Update 'VARIANT' to pick a Ruby version: 2, 2.7, 2.6, 2.5
+	// 		"VARIANT": "2.7",
+	// 		"NODE_VERSION": "lts/*"
+	// 	}
+	// },
+	"dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+	"service": "web",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 
@@ -22,10 +26,13 @@
 	],
 	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [ 3000 ],
+	// "forwardPorts": [ 3000 ],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "rvm install 2.7.1",
+	"postCreateCommand": [
+		"rvm install ruby-2.7.1",
+		"bundle install --path=vendor/bundle"
+	],
 
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"

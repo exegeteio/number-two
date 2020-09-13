@@ -16,7 +16,7 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - "${PORT:-3000}:5000"
+      - "5000:5000"
     volumes:
       - ./:/app/
     depends_on:
@@ -29,6 +29,7 @@ services:
       DATABASE_URL: postgres://postgres:postgres@postgres:5432/
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
       REDIS_URL: redis://redis:6379
+      BINDING: 0.0.0.0
     restart: always
 volumes:
   pg-data:

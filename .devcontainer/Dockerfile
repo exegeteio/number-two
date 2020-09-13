@@ -1,5 +1,5 @@
 ARG VARIANT=2
-FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT}
+FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT} AS devcontainer
 
 # Install Rails
 RUN gem install rails webdrivers 
@@ -14,6 +14,7 @@ RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSI
 
 # [Optional] Uncomment this line to install additional gems.
 RUN gem install rubocop bundle-audit
+WORKDIR /workspace
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
