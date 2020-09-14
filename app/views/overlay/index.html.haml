@@ -2,13 +2,5 @@
   %p Question
   %ul
     %li TODO: Current !ask question here.
-#chat_overlay.overlay
-  %section.message-list
-    %section.message
-      .nes-balloon.from-right
-        %p TODO:  Add messages here.
-      %i 🐞
-    %section.message
-      .nes-balloon.from-right
-        %p TODO:  Add more messages, and who sent them.
-      %i 👾
+#chat_overlay.overlay{data: {controller: :chat}}
+  %section.message-list{data: {target: 'chat.messages'}}
