@@ -1,7 +1,8 @@
-.message
 %section.message{id: "message-#{id}"}
-  .nes-balloon.from-right
-    %p
-      = message
-  .user= user
-  %i 👩‍💻
+  .balloon
+    .nes-balloon.from-right
+      %p
+        = message
+  .avatar
+    %span.user{style: "color: #{user_color}"}= user
+    %img{src: avatar}

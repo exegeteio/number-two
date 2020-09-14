@@ -12,6 +12,5 @@ export const chatOverlayMessagesChannel = consumer.subscriptions.create("ChatOve
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
-    console.log('Chat overlay received', data)
   }
 });

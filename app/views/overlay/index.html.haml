@@ -4,3 +4,6 @@
     %li TODO: Current !ask question here.
 #chat_overlay.overlay{data: {controller: :chat}}
   %section.message-list{data: {target: 'chat.messages'}}
+    = render partial: 'messages/chat', locals: {id: 'test-1', user: 'hairedshavedbreaker', message: 'We done did the do, but mistakes were made.  Blazor sucks.', user_color: '#ccc', avatar: ''}
+    = render partial: 'messages/chat', locals: {id: 'test-2', user: 'exegete46', message: 'Be nice to Blazor!', user_color: '#ccc', avatar: ''}
+    = render partial: 'messages/chat', locals: {id: 'test-3', user: 'exegete46', message: '🧑‍🚀', user_color: '#ccc', avatar: ''}

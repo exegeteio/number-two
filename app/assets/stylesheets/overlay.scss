@@ -23,20 +23,33 @@
     display: flex;
     flex-direction: column;
     .message {
-      display: flex;
-      margin-bottom: 1rem;
-      align-self: flex-end;
+      display: grid;
+      grid-template-rows: auto 48px;
+      margin-bottom: -1rem;
       &:last-child {
         margin-bottom: 0.5rem;
       }
-      i {
+      .balloon {
+        display: flex;
+        flex-direction: column;
         align-self: flex-end;
-        font-size: 48px;
-        line-height: 48px;
-        margin-left: .75rem;
+        .nes-balloon {
+          align-self: flex-end;
+          padding: 0.25rem;
+          min-width: 4rem;
+          text-align: center;
+        }
       }
-      .nes-balloon {
-        padding: 0.25rem;
+      .avatar {
+        margin-top: -2rem;
+        text-align: right;
+        img {
+          width: 48px;
+          height: 48px;
+          margin-left: .75rem;
+          border-radius: 100%;
+          image-rendering: pixelated;
+        }
       }
     }
   }
