@@ -34,5 +34,4 @@ yarn-debug.log*
 .*.swp
 
 vendor/bundle
-
 .env
