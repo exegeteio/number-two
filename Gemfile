@@ -22,13 +22,17 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'haml-rails'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-# Faraday for writing API wrappers.
+# Audit the bundle.
+gem 'bundle-audit', groups: [:development, :test]
+
+# Haml, just do it.
+gem 'haml-rails'
+
 gem 'faraday'
+gem 'twitch-api'
 
 
 group :development, :test do
