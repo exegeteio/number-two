@@ -1,12 +1,14 @@
 class ChatMessageJob < ApplicationJob
   queue_as :default
 
+  BANNED_USERS = %w[pretzelrocks nightbot b3_bot].freeze
+
   def perform(args)
     args['avatar'] = avatar_for args['user']
     ActionCable.server.broadcast(
       'chat_overlay_messages',
       render(args)
-    )
+    ) unless BANNED_USERS.include? args['user'].downcase
   end
 
   private

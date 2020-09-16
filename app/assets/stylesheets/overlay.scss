@@ -26,6 +26,9 @@
       display: grid;
       grid-template-rows: auto 48px;
       margin-bottom: -1rem;
+      &.fade {
+        display: none;
+      }
       &:last-child {
         margin-bottom: 0.5rem;
       }
