@@ -1,0 +1,10 @@
+%li{data: {controller: "ask-message"}}
+  %div{data: {target: 'ask-message.the-question'}}
+  %span{style: "color: #{user_color}"}
+    = user
+  %p= question
+  %div
+    %button.nes-btn.is-warning{data: {action: 'click->ask-message#delete'}}
+      Delete
+    %button.nes-btn.is-success{data: {action: 'click->ask-message#promote'}}
+      Promote

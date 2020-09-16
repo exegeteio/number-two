@@ -10,6 +10,7 @@
 import { Controller } from "stimulus"
 require("comfy.js")
 import { twitchMessagesChannel } from "../channels/twitch_messages_channel"
+import { twitchCommandsChannel } from "../channels/twitch_commands_channel"
 
 export default class extends Controller {
   connect() {
@@ -24,14 +25,13 @@ export default class extends Controller {
       })
     }
     ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
-      console.log( "TODO: Handle commands!", user, command, message, flags, extra );
-      // twitchCommandChannel.send({
-      //   ... flags,
-      //   ... extra,
-      //   command: command,
-      //   user: user,
-      //   message: message,
-      // })
+      twitchCommandsChannel.send({
+        ... flags,
+        ... extra,
+        command: command,
+        user: user,
+        message: message,
+      })
     }
   }
 }

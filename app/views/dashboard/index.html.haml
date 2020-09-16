@@ -3,6 +3,6 @@
 %h1 Dashboard
 .container
   %h2 !ask
-  %ul
-    %li First Question in the list!
+  %ul{data: {controller: :ask, target: 'ask.questions'}}
+    = render partial: 'messages/ask', locals: {user: 'Ruby On Rails', user_color: '#f00', question: 'Is this the first ask?'}
 .comfy{data: {controller: :comfy}}
