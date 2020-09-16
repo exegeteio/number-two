@@ -13,10 +13,7 @@ export default class extends Controller {
 
   connect() {
     setTimeout(() => {
-      this.element.classList.add('fade');
-    }, 50_000);
-    setTimeout(() => {
       this.element.remove();
-    }, 60_000);
+    }, 45_000);
   }
 }
