@@ -1,3 +1,20 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+#ask_list {
+  list-style: none;
+  li {
+    margin: 2rem;
+    padding: 1rem;
+    &.current {
+      background-color: rgba(0, 255, 0, 0.5);
+    }
+  }
+}
+
+nav {
+  .right {
+    text-align: right;
+  }
+}

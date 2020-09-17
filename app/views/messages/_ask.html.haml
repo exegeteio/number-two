@@ -1,10 +1,12 @@
-%li{data: {controller: "ask-message"}}
-  %div{data: {target: 'ask-message.the-question'}}
-  %span{style: "color: #{user_color}"}
-    = user
-  %p= question
+%li.nes-container.is-rounded{data: {controller: "ask-message"}}
+  %div{data: {target: 'ask-message.question'}}
+    %span{style: "color: #{user_color}"}
+      = user
+    %p= question
   %div
-    %button.nes-btn.is-warning{data: {action: 'click->ask-message#delete'}}
-      Delete
-    %button.nes-btn.is-success{data: {action: 'click->ask-message#promote'}}
+    %button.nes-btn.is-primary{data: {action: 'click->ask-message#promote'}}
       Promote
+    %button.nes-btn.is-success{data: {action: 'click->ask-message#complete'}}
+      Complete
+    %button.nes-btn.is-warning{data: {target: 'ask-message.delete', action: 'click->ask-message#delete'}}
+      Delete

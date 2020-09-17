@@ -16,7 +16,6 @@ export default class extends Controller {
   connect() {
     ComfyJS.Init("exegete46")
     ComfyJS.onChat = ( user, message, flags, self, extra ) => {
-      // console.log( user, message, flags, self, extra );
       twitchMessagesChannel.send({
         ... flags,
         ... extra,
