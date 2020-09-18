@@ -8,6 +8,7 @@ class TwitchMessagesChannel < ApplicationCable::Channel
   end
 
   def receive(data)
+    data['message'] = ActionController::Base.helpers.sanitize(data['message'])
     ChatMessageJob.perform_later(data)
   end
 end

@@ -1,28 +1,25 @@
 # TODOs
 
-# WHERE WAS I!?
-
-Next thing we need is Redis!
-
 ## The Plan
 
 I'd like to build something similar to [Number One](https://github.com/michaeljolley/number-one), but doing fewer things.
 
 ## Features
 
-- On-screen chat log.
-- !ask command
-- Overlay screen.
-  - Each chat message in the top-right.
+- [x] On-screen chat log.
+- [x] !ask command
+- [x] Overlay screen.
+  - [x] Each chat message in the top-right.
     - Wishlist!  Timeout progress bar.
-  - !ask message in top-left.
-    - Triggered by the dashboard.
-- Dashboard screen.
-  - Current !ask questions by ranking.
-    - Link to mark as current question.
+  - [x] !ask message in bottom-left;
+    - [x] Triggered by the dashboard.
+- [x] Dashboard screen.
+  - [x] Current !ask questions by ranking.
+    - [x] Link to mark as current question.
 
 ### Wishlist Features
 
+- Enable emotes in the chat.
 - !ask command - enhancement
   - Vote on next question to answer, ala Reddit.
   - Requires a database.

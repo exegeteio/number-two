@@ -2,7 +2,7 @@
   .balloon
     .nes-balloon.from-right
       %p
-        = message
+        = message.html_safe
   .avatar
     %span.user{style: "color: #{user_color}"}= user
     %img{src: avatar}
