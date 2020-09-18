@@ -10,7 +10,7 @@
   @include overlay;
   left: 1em;
   bottom: 1em;
-  max-width: 48%;
+  max-width: 576px;
   background-color: white;
   &:empty {
     display: none;
@@ -21,7 +21,7 @@
   @include overlay;
   top: 1em;
   right: 1em;
-  max-width: 48%;
+  max-width: 576px;
   .message-list {
     display: flex;
     flex-direction: column;
@@ -40,8 +40,13 @@
           align-self: flex-end;
           padding: 0.25rem;
           min-width: 4rem;
+          max-width: 576px;
+          overflow: hidden;
           text-align: center;
           background-color: rgba(255, 255, 255, 0.5);
+          img {
+            max-width: 48px;
+          }
           &.from-right {
             &:before {
               background-color: rgba(255, 255, 255, 0.75);
