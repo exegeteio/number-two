@@ -18,6 +18,8 @@ I'd like to build something similar to [Number One](https://github.com/michaeljo
     - [x] Link to mark as current question.
 - !todo command
   - Show current task on the screen.
+- Animate all the things.
+  - BBB suggested looking at `@keyframes`
 
 ### Wishlist Features
 

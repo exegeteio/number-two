@@ -9,9 +9,9 @@
 .container
   %h2 !ask
   %ul#ask_list{data: {controller: :ask, target: 'ask.questions'}}
-    -# = render partial: 'messages/ask', locals: {user: 'Ruby On Rails', user_color: '#f00', question: 'Is this the first !ask?'}
+    = render partial: 'twitch_commands/ask', locals: {user: 'Ruby On Rails', user_color: '#f00', message: 'What are we working on today?'}
 .container
   %h2 !todo
   %ul#todo_list{data: {controller: :todo, target: 'todo.tasks'}}
-    = render partial: 'messages/todo', locals: {todo: 'Celebrate completing of !todo !'}
+    = render partial: 'twitch_commands/todo', locals: {message: 'Add a default Todo for the day!'}
 .comfy{data: {controller: :comfy, 'comfy-channel': ENV['TWITCH_CHANNEL']}}

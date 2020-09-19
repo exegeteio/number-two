@@ -1,42 +1,11 @@
+# Job for translating a chat command to a TwitchCommand call
+# TwitchCommand call can then broadcast via ActionCAble
+# whatever response is needed.
 class ChatCommandJob < ApplicationJob
   queue_as :default
 
   def perform(args)
-    case args['command']
-    when 'ask'
-      ActionCable.server.broadcast(
-        'ask_messages',
-        render_ask(args)
-      )
-    when 'todo'
-      ActionCable.server.broadcast(
-        'todo_messages',
-        render_todo(args)
-      )
-    end
-  end
-
-  private
-
-  def render_ask(args)
-    ApplicationController.new.render_to_string(
-      partial: 'messages/ask',
-      locals: get_locals(args)
-    )
-  end
-
-  def render_todo(args)
-    ApplicationController.new.render_to_string(
-      partial: 'messages/todo',
-      locals: {todo: args['message']}
-    )
-  end
-
-  def get_locals(args)
-    {
-      question: args['message'],
-      user_color: args['userColor'],
-      user: args['user']
-    }
+    args.transform_keys! { |k| k.underscore.to_sym }
+    TwitchCommands.call(command: args[:command], locals: args)
   end
 end
