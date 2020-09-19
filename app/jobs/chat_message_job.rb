@@ -45,7 +45,7 @@ class ChatMessageJob < ApplicationJob
       locations.each do |loc|
         b,e = loc.split('-').collect(&:to_i)
         emote = message[b,(e-b+1)]
-        substitutions[emote] = emote_url(emote_id)
+        substitutions[emote] = emote_url(emote_id, emote)
       end
     end
     
@@ -55,7 +55,7 @@ class ChatMessageJob < ApplicationJob
     message
   end
 
-  def emote_url(emote_id)
-    "<img src='https://static-cdn.jtvnw.net/emoticons/v2/#{emote_id}/default/dark/2.0'/>".html_safe
+  def emote_url(emote_id, emote)
+    "<img src='https://static-cdn.jtvnw.net/emoticons/v2/#{emote_id}/default/dark/2.0' title='#{emote}' />".html_safe
   end
 end

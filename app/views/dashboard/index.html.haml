@@ -1,7 +1,11 @@
+- content_for :title do
+  Dashboard
 %nav
   %section.right
     %a{href: overlay_index_url, target: :_blank} 🔗 Overlay
-%h1 Dashboard
+%h1
+  = ENV['TWITCH_CHANNEL']
+  Dashboard
 .container
   %h2 !ask
   %ul#ask_list{data: {controller: :ask, target: 'ask.questions'}}
