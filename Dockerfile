@@ -53,7 +53,7 @@ RUN yarn install
 
 COPY ./ /app/
 RUN RAILS_ENV=production SECRET_KEY_BASE=not_for_prod bundle exec rake assets:precompile
-RUN rm -rf node_modules tmp/cache app/assets vendor/assets lib/assets spec
+RUN rm -rf node_modules tmp/cache vendor/assets lib/assets spec
 
 # Final image
 FROM ruby:2.7-alpine AS final
@@ -63,11 +63,11 @@ ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_SERVE_STATIC_FILES true
 ENV EXECJS_RUNTIME Disabled
 
-RUN apk add --update --no-cache postgresql-client
+RUN apk add --update --no-cache postgresql-client tzdata
 
 # Add user
 RUN addgroup -g 1000 -S app \
- && adduser -u 1000 -S app -G app
+    && adduser -u 1000 -S app -G app
 USER app
 
 WORKDIR /app
