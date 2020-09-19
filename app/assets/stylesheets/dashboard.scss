@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-#ask_list {
+#ask_list, #todo_list {
   list-style: none;
   li {
     margin: 2rem;
@@ -10,6 +10,12 @@
     &.current {
       background-color: rgba(0, 255, 0, 0.5);
     }
+  }
+}
+
+#todo_list {
+  h3 {
+    display: none;
   }
 }
 
