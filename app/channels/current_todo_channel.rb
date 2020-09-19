@@ -1,6 +1,6 @@
-class CurrentAskChannel < ApplicationCable::Channel
+class CurrentTodoChannel < ApplicationCable::Channel
   def subscribed
-    stream_from 'current_ask'
+    stream_from 'current_todo'
   end
 
   def unsubscribed
@@ -9,7 +9,7 @@ class CurrentAskChannel < ApplicationCable::Channel
 
   def receive(data)
     ActionCable.server.broadcast(
-      'current_ask',
+      'current_todo',
       data
     )
   end

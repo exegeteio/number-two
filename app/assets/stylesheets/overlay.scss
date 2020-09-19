@@ -6,6 +6,17 @@
   position: absolute;
 }
 
+#todo_overlay {
+  @include overlay;
+  left: 1em;
+  top: 1em;
+  max-width: 576px;
+  background-color:white;
+  &:empty {
+    display: none;
+  }
+}
+
 #ask_overlay {
   @include overlay;
   left: 1em;

@@ -1,6 +1,6 @@
 - content_for :title do
   Overlay
+#todo_overlay.overlay.nes-container.is-rounded.with-title{data: {controller: 'current-todo', target: 'current-todo.task'}}
 #ask_overlay.overlay.nes-container.is-rounded.with-title{data: {controller: 'current-ask', target: 'current-ask.question'}}
 #chat_overlay.overlay{data: {controller: :chat}}
   %section.message-list{data: {target: 'chat.messages'}}
-    -# = render partial: 'messages/chat', locals: {id: 'test-1', user: 'Ruby on Rails', message: 'Welcome to the stream! 💎', user_color: '#000', avatar: 'https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg'}

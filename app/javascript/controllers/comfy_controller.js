@@ -16,6 +16,7 @@ export default class extends Controller {
   connect() {
     console.log(`Connecting to Twitch chat channel: ${this.data.get("channel")}`);
     ComfyJS.Init(this.data.get("channel"))
+
     ComfyJS.onChat = ( user, message, flags, self, extra ) => {
       twitchMessagesChannel.send({
         ... flags,
@@ -24,6 +25,7 @@ export default class extends Controller {
         message: message,
       })
     }
+
     ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
       twitchCommandsChannel.send({
         ... flags,

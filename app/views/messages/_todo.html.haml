@@ -1,0 +1,11 @@
+%li.nes-container.is-rounded{data: {controller: "todo-message"}}
+  %div{data: {target: 'todo-message.task'}}
+    %h3.nes-text.is-success Current Task
+    %p= todo
+  %div
+    %button.nes-btn.is-primary{data: {action: 'click->todo-message#promote'}}
+      Promote
+    %button.nes-btn.is-success{data: {action: 'click->todo-message#complete'}}
+      Complete
+    %button.nes-btn.is-warning{data: {target: 'todo-message.delete', action: 'click->todo-message#delete'}}
+      Delete

@@ -16,10 +16,12 @@ I'd like to build something similar to [Number One](https://github.com/michaeljo
 - [x] Dashboard screen.
   - [x] Current !ask questions by ranking.
     - [x] Link to mark as current question.
+- !todo command
+  - Show current task on the screen.
 
 ### Wishlist Features
 
-- Enable emotes in the chat.
+- [x] Enable emotes in the chat.
 - !ask command - enhancement
   - Vote on next question to answer, ala Reddit.
   - Requires a database.

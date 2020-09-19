@@ -1,8 +1,5 @@
 %li.nes-container.is-rounded{data: {controller: "ask-message"}}
-  %div{data: {target: 'ask-message.question'}}
-    %span{style: "color: #{user_color}"}
-      = user
-    %p= question
+  = render partial: 'messages/question', locals: {user_color: user_color, user: user, question: question}
   %div
     %button.nes-btn.is-primary{data: {action: 'click->ask-message#promote'}}
       Promote
