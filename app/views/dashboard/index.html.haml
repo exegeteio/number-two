@@ -13,5 +13,6 @@
 .container
   %h2 !todo
   %ul#todo_list{data: {controller: :todo, target: 'todo.tasks'}}
-    = render partial: 'twitch_commands/todo', locals: {message: 'Add a default Todo for the day!'}
+    - @todos.each do |todo|
+      = render partial: 'twitch_commands/todo', locals: {message: todo.message, username: todo.username}
 .comfy{data: {controller: :comfy, 'comfy-channel': ENV['TWITCH_CHANNEL']}}

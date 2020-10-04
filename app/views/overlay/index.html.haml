@@ -1,6 +1,8 @@
 - content_for :title do
   Overlay
 #todo_overlay.overlay.nes-container.is-rounded.with-title{data: {controller: 'current-todo', target: 'current-todo.task'}}
+  - if @todo
+    = render partial: 'twitch_commands/todo_message', locals: {username: @todo.username, message: @todo.message}
 #ask_overlay.overlay.nes-container.is-rounded.with-title{data: {controller: 'current-ask', target: 'current-ask.question'}}
 #chat_overlay.overlay{data: {controller: :chat}}
   %section.message-list{data: {target: 'chat.messages'}}
