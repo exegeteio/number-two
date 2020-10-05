@@ -2,7 +2,10 @@
 class TwitchCommands
   class Todo < TwitchCommands::Base
     def self.call(locals:)
-      broadcast('todo_messages', render(locals)) if mod?(locals)
+      ::Todo.create_or_find_by!(message_id: locals[:id]) do |t|
+        t.username = locals[:username]
+        t.message = locals[:message]
+      end
     end
   end
 end

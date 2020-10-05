@@ -11,11 +11,25 @@ import { Controller } from "stimulus"
 import { todoMessagesChannel } from "../channels/todo_messages_channel"
 
 export default class extends Controller {
-  static targets = ['tasks']
+  static targets = ['container', 'todos']
+  hide_statuses = ['completed', 'deleted']
 
   connect() {
     todoMessagesChannel.received = (data) => {
-      this.tasksTarget.insertAdjacentHTML('beforeend', data)
+      let replaced = 0;
+      this.todosTargets.forEach(element => {
+        if (element.dataset.id == data['id']) {
+          if (this.hide_statuses.includes(data['status'])) {
+            element.outerHTML = '';
+          } else {
+            element.outerHTML = data['html'];
+          }
+          replaced++;
+        }
+      });
+      if (replaced == 0) {
+        this.containerTarget.insertAdjacentHTML('beforeend', data['html'])
+      }
     }
   }
 }

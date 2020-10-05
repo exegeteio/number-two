@@ -7,14 +7,20 @@
 // </div>
 
 import { Controller } from "stimulus"
-import { currentTodoChannel } from "../channels/current_todo_channel"
+import { todoMessagesChannel } from "../channels/todo_messages_channel"
 
 export default class extends Controller {
   static targets = ['task']
 
   connect() {
-    currentTodoChannel.received = (data) => {
-      this.taskTarget.innerHTML = data['content']
+    todoMessagesChannel.received = (data) => {
+      if (data['status'] == 'active') {
+        this.taskTarget.innerHTML = data['message_html'];
+        this.taskTarget.dataset.currentId = data['id'];
+      } else if (this.taskTarget.dataset.currentId == data['id']) {
+        this.taskTarget.innerHTML = '';
+        this.taskTarget.dataset.currentId = '0';
+      }
     }
   }
 }
