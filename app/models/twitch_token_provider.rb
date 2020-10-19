@@ -1,36 +1,22 @@
 # frozen_string_literal: true
 
-require 'json'
-
-# Class for holding twitch-API related functionality.
+# Wrapper for Twitch API.
 class TwitchTokenProvider
   def initialize(client_id:, client_secret:)
     @client_id = client_id
     @client_secret = client_secret
   end
 
-  def access_token
-    faraday.post("token?#{params.to_query}").body.dig('access_token')
+  def oauth_token
+    twitch_api.oauth_token
   end
 
   private
 
-  def faraday
-    @faraday ||= Faraday.new(
-      url: 'https://id.twitch.tv/oauth2'
-    ) do |faraday|
-      faraday.response :json
-      faraday.adapter Faraday.default_adapter
-      # faraday.response :logger, nil, { headers: true, bodies: true }
-    end
-  end
-
-  def params
-    {
+  def twitch_api
+    @twitch_api ||= TwitchOauthApi.new(
       client_id: @client_id,
-      client_secret: @client_secret,
-      grant_type: 'client_credentials',
-      scope: 'channel:moderate chat:edit chat:read'
-    }
+      client_secret: @client_secret
+    )
   end
 end

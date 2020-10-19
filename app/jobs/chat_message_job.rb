@@ -18,7 +18,7 @@ class ChatMessageJob < ApplicationJob
   def avatar_for(username)
     Rails.cache.fetch("avatar/#{username}", expires_in: 12.hours) do
       Rails.logger.debug "Cache miss for #{username}."
-      $TWITCH.get_users(login: username).data[0].profile_image_url
+      $TWITCH.get_users(login: username).data.first.profile_image_url
     end
   end
 

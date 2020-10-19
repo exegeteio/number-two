@@ -7,7 +7,7 @@ if ENV['TWITCH_CLIENT_ID']
   )
 
   $TWITCH = Twitch::Client.new(
-    access_token: twitch_token_provider.access_token,
+    access_token: twitch_token_provider.oauth_token,
     client_id: ENV['TWITCH_CLIENT_ID']
   )
 end
