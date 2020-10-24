@@ -3,9 +3,8 @@
 %nav
   %section.right
     %a{href: overlay_index_url, target: :_blank} 🔗 Overlay
-%h1
-  = ENV['TWITCH_CHANNEL']
-  Dashboard
+.container
+  = render 'twitch_auth'
 .container
   %h2 !ask
   %ul#ask_list{data: {controller: :ask, target: 'ask.questions'}}
@@ -14,4 +13,3 @@
   %h2 !todo
   %ul#todo_list{data: {controller: :todo, target: 'todo.container'}}
     = render @todos
-.comfy{data: {controller: :comfy, 'comfy-channel': ENV['TWITCH_CHANNEL']}}

@@ -19,6 +19,15 @@
   }
 }
 
+.comfy {
+  button {
+    display: none;
+    &.in {
+      display: inline-block;
+    }
+  }
+}
+
 nav {
   .right {
     text-align: right;

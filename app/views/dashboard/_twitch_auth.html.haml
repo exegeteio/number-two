@@ -1,0 +1,9 @@
+.comfy{data: {controller: :comfy, 'comfy-client-id': ENV['TWITCH_CLIENT_ID']}}
+  .actions
+    %button.nes-btn.is-error{data: {action: 'comfy#signOut', target: 'comfy.signOut'}}
+      Sign Out
+  %h1{data: {target: 'comfy.welcome'}}
+    Please Sign In
+  .actions
+    %button.nes-btn.is-primary{data: {action: 'comfy#signIn', target: 'comfy.signIn'}}
+      Sign In
