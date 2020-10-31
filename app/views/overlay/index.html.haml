@@ -3,5 +3,5 @@
 #todo_overlay.overlay.nes-container.is-rounded.with-title{data: {controller: 'current-todo', target: 'current-todo.task', current_id: @todo&.id}}<
   = render partial: 'todos/todo_message', locals: {todo: @todo} if @todo
 #ask_overlay.overlay.nes-container.is-rounded.with-title{data: {controller: 'current-ask', target: 'current-ask.question'}}
-#chat_overlay.overlay{data: {controller: :chat}}
+#chat_overlay.overlay{data: {controller: :chat, 'chat-channel': @channel}}
   %section.message-list{data: {target: 'chat.messages'}}
