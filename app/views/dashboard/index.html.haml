@@ -2,7 +2,8 @@
   Dashboard
 %nav
   %section.right
-    %a{href: overlay_index_url, target: :_blank} 🔗 Overlay
+    %a{href: overlay_index_url(channel: current_user&.username), target: :_blank} 🔗 Overlay
+    %a{href: destroy_user_session_path, target: :_blank} Sign Out
 .container
   = render 'twitch_auth'
 .container

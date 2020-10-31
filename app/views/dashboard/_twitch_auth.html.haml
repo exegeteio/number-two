@@ -1,4 +1,4 @@
-.comfy{data: {controller: :comfy, 'comfy-client-id': ENV['TWITCH_CLIENT_ID']}}
+.comfy{data: {controller: :comfy, 'comfy-client-id': ENV['TWITCH_CLIENT_ID'], 'comfy-channel': current_user.username, 'comfy-token': twitch_token}}
   .actions
     %button.nes-btn.is-error{data: {action: 'comfy#signOut', target: 'comfy.signOut'}}
       Sign Out

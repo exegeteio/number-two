@@ -2,8 +2,8 @@
 require 'securerandom'
 
 namespace :ed_todos do
-  desc "Add educational todos to the database"
-  task :seed => :environment do
+  desc 'Add educational todos to the database'
+  task seed: :environment do
     [
       'Learn how migrations work',
       'Learn how i18n / l10n works',

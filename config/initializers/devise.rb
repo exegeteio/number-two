@@ -275,7 +275,8 @@ Devise.setup do |config|
   config.omniauth(
     :twitch,
     ENV['TWITCH_CLIENT_ID'],
-    ENV['TWITCH_CLIENT_SECRET']
+    ENV['TWITCH_CLIENT_SECRET'],
+    scope: 'user:read:email chat:read chat:edit channel:moderate whispers:read whispers:edit channel:read:redemptions'
   )
 
   # ==> Warden configuration
