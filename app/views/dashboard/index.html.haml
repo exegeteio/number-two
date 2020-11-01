@@ -11,7 +11,7 @@
   = render 'twitch_auth'
 .container
   %h2 !ask
-  %ul#ask_list{data: {controller: :ask, target: 'ask.questions'}}
+  %ul#ask_list{data: {controller: :ask, target: 'ask.questions', 'ask-channel': current_user&.username}}
 .container
   %h2 !todo
   %ul#todo_list{data: {controller: :todo, target: 'todo.container'}}
