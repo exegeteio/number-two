@@ -7,12 +7,13 @@
 // </div>
 
 import { Controller } from "stimulus"
-import { currentAskChannel } from "../channels/current_ask_channel"
+import { buildCurrentAskChannel } from "../channels/current_ask_channel"
 
 export default class extends Controller {
   static targets = ['question']
 
   connect() {
+    let currentAskChannel = buildCurrentAskChannel(this.data.get('channel'));
     currentAskChannel.received = (data) => {
       this.questionTarget.innerHTML = data['content']
     }

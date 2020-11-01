@@ -8,6 +8,6 @@ class TwitchCommandsChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    ChatCommandJob.perform_later(data) if broadcast_to? data['channel']
+    ChatCommandJob.perform_later(data)
   end
 end

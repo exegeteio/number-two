@@ -11,12 +11,12 @@ import { Controller } from "stimulus"
 import { buildAskMessagesChannel } from "../channels/ask_messages_channel"
 
 export default class extends Controller {
-  static targets = ['questions']
+  static targets = ['questions'];
 
   connect() {
-    let askMessagesChannel = buildAskMessagesChannel()
+    let askMessagesChannel = buildAskMessagesChannel(this.data.get('channel'));
     askMessagesChannel.received = (data) => {
-      this.questionsTarget.insertAdjacentHTML('beforeend', data)
+      this.questionsTarget.insertAdjacentHTML('beforeend', data);
     }
   }
 }

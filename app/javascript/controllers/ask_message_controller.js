@@ -7,23 +7,32 @@
 // </div>
 
 import { Controller } from "stimulus"
-import { currentAskChannel } from "../channels/current_ask_channel"
+import { buildCurrentAskChannel } from "../channels/current_ask_channel"
 
 export default class extends Controller {
   static targets = ['question', 'delete'];
+
+  connect() {
+    this.currentAskChannel = buildCurrentAskChannel(this.data.get('channel'));
+  }
 
   delete() {
     this.element.remove();
   }
 
   promote() {
-    currentAskChannel.send({content: this.questionTarget.outerHTML})
-    this.element.classList.add('current')
+    this.currentAskChannel.send({
+      channel: this.data.get('channel'),
+      content: this.questionTarget.outerHTML
+    });
+    this.element.classList.add('current');
     this.deleteTarget.remove();
   }
 
   complete() {
-    currentAskChannel.send({content: ''})
-    this.delete()
+    this.currentAskChannel.send({ 
+      channel: this.data.get('channel'),
+      content: '' });
+    this.delete();
   }
 }

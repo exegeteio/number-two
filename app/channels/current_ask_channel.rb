@@ -9,8 +9,8 @@ class CurrentAskChannel < ApplicationCable::Channel
 
   def receive(data)
     ActionCable.server.broadcast(
-      "current_ask_#{data['channel']}",
+      "current_ask_#{connection.current_user.username}",
       data
-    ) if broadcast_to? data['channel']
+    )
   end
 end

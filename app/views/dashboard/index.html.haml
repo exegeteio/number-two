@@ -12,7 +12,6 @@
 .container
   %h2 !ask
   %ul#ask_list{data: {controller: :ask, target: 'ask.questions'}}
-    = render partial: 'twitch_commands/ask', locals: {user: 'Ruby On Rails', user_color: '#f00', message: 'What are we working on today?'}
 .container
   %h2 !todo
   %ul#todo_list{data: {controller: :todo, target: 'todo.container'}}

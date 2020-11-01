@@ -1,4 +1,4 @@
-%li.nes-container.is-rounded{data: {controller: "ask-message"}}
+%li.nes-container.is-rounded{data: {controller: "ask-message", "ask-message-channel": channel}}
   = render partial: 'twitch_commands/question', locals: {user_color: user_color, user: user, message: message}
   %div
     %button.nes-btn.is-primary{data: {action: 'click->ask-message#promote'}}
