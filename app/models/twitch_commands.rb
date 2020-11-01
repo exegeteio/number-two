@@ -1,7 +1,7 @@
 # Base class for all twitch commands.
 class TwitchCommands
-  def self.call(command:, locals:)
-    "TwitchCommands::#{command.titleize}".constantize.call(locals: locals)
+  def self.call(command:, locals:, user:)
+    "TwitchCommands::#{command.titleize}".constantize.call(user: user, locals: locals)
   rescue NameError
     Rails.logger.error("Unable to find matching command: #{command}")
   end

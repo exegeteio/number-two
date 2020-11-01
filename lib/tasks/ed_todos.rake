@@ -18,7 +18,8 @@ namespace :ed_todos do
       Todo.create!(
         message_id: SecureRandom.uuid,
         username: 'exegete46',
-        message: t
+        message: t,
+        channel: 'exegete46'
       )
     end
   end

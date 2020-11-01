@@ -4,8 +4,8 @@
 class ChatCommandJob < ApplicationJob
   queue_as :default
 
-  def perform(args)
+  def perform(args, user)
     args.transform_keys! { |k| k.underscore.to_sym }
-    TwitchCommands.call(command: args[:command], locals: args)
+    TwitchCommands.call(command: args[:command], user: user, locals: args)
   end
 end

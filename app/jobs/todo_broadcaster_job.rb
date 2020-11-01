@@ -3,7 +3,7 @@ class TodoBroadcasterJob < ApplicationJob
 
   def perform(todo)
     ActionCable.server.broadcast(
-      "todo_messages_#{todo['channel']}",
+      "todo_messages_#{todo.channel}",
       {
         id: todo.id,
         status: todo.status,

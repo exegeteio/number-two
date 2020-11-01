@@ -1,8 +1,9 @@
 class TodoController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_todo
 
   def promote
-    Todo.active.update(status: :pending)
+    Todo.active.where(channel: current_user.username).update(status: :pending)
     @todo.active!
   end
 
@@ -17,6 +18,6 @@ class TodoController < ApplicationController
   private
 
   def set_todo
-    @todo = Todo.find_by! id: params[:id]
+    @todo = Todo.find_by!(id: params[:id], channel: current_user.username)
   end
 end

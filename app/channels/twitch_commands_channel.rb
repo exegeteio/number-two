@@ -8,6 +8,6 @@ class TwitchCommandsChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    ChatCommandJob.perform_later(data)
+    ChatCommandJob.perform_later(data, connection.current_user)
   end
 end
