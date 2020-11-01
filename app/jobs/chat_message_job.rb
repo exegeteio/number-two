@@ -5,10 +5,12 @@ class ChatMessageJob < ApplicationJob
 
   def perform(args)
     args['avatar'] = avatar_for args['user']
-    ActionCable.server.broadcast(
-      'chat_overlay_messages',
-      render(args)
-    ) unless BANNED_USERS.include? args['user'].downcase
+    unless BANNED_USERS.include? args['user'].downcase
+      ActionCable.server.broadcast(
+        "chat_overlay_messages_#{args['channel']}",
+        render(args)
+      )
+    end
   end
 
   private
@@ -39,17 +41,18 @@ class ChatMessageJob < ApplicationJob
   end
 
   def process_emotes(message, emotes)
-    substitutions = Hash.new
+    substitutions = {}
     return message unless emotes.present?
-    emotes.each do |emote_id,locations|
+
+    emotes.each do |emote_id, locations|
       locations.each do |loc|
-        b,e = loc.split('-').collect(&:to_i)
-        emote = message[b,(e-b+1)]
+        b, e = loc.split('-').collect(&:to_i)
+        emote = message[b, (e - b + 1)]
         substitutions[emote] = emote_url(emote_id, emote)
       end
     end
-    
-    substitutions.each do |text,img|
+
+    substitutions.each do |text, img|
       message.gsub!(text, img)
     end
     message

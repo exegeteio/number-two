@@ -5,6 +5,7 @@ class TwitchCommands
       ::Todo.create_or_find_by!(message_id: locals[:id]) do |t|
         t.username = locals[:username]
         t.message = locals[:message]
+        t.channel = locals[:channel]
       end
     end
   end

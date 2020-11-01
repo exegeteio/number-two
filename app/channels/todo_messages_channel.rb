@@ -1,6 +1,6 @@
 class TodoMessagesChannel < ApplicationCable::Channel
   def subscribed
-    stream_from 'todo_messages'
+    stream_from "todo_messages_#{params['twitch_channel']}"
   end
 
   def unsubscribed

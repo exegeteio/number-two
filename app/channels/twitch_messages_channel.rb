@@ -1,6 +1,6 @@
 class TwitchMessagesChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "twitch_messages"
+    stream_from "twitch_messages_#{params['twitch_channel']}"
   end
 
   def unsubscribed
@@ -8,7 +8,9 @@ class TwitchMessagesChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    data['message'] = ActionController::Base.helpers.sanitize(data['message'])
-    ChatMessageJob.perform_later(data)
+    if broadcast_to? data['channel']
+      data['message'] = ActionController::Base.helpers.sanitize(data['message'])
+      ChatMessageJob.perform_later(data)
+    end
   end
 end

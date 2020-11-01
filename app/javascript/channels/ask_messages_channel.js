@@ -1,15 +1,10 @@
 import consumer from "./consumer"
 
-export const askMessagesChannel = consumer.subscriptions.create("AskMessagesChannel", {
-  connected() {
-    // Called when the subscription is ready for use on the server
-  },
-
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
-
-  received(data) {
-    // Called when there's incoming data on the websocket for this channel
-  }
-});
+export const buildAskMessagesChannel = function (twitch_channel) {
+  return consumer.subscriptions.create("AskMessagesChannel",
+    {
+      channel: "ChatOverlayMessagesChannel",
+      twitch_channel: twitch_channel,
+    }
+  );
+};

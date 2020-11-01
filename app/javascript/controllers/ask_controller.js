@@ -8,12 +8,13 @@
 // </div>
 
 import { Controller } from "stimulus"
-import { askMessagesChannel } from "../channels/ask_messages_channel"
+import { buildAskMessagesChannel } from "../channels/ask_messages_channel"
 
 export default class extends Controller {
   static targets = ['questions']
 
   connect() {
+    let askMessagesChannel = buildAskMessagesChannel()
     askMessagesChannel.received = (data) => {
       this.questionsTarget.insertAdjacentHTML('beforeend', data)
     }

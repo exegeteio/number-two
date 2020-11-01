@@ -8,12 +8,13 @@
 // </div>
 
 import { Controller } from "stimulus"
-import { chatOverlayMessagesChannel } from "../channels/chat_overlay_messages_channel"
+import { buildChatOverlayMessagesChannel } from "../channels/chat_overlay_messages_channel"
 
 export default class extends Controller {
   static targets = ['messages']
 
   connect() {
+    let chatOverlayMessagesChannel = buildChatOverlayMessagesChannel(this.data.get('channel'));
     chatOverlayMessagesChannel.received = (data) => {
       this.messagesTarget.insertAdjacentHTML('beforeend', data)
     }

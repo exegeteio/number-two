@@ -3,7 +3,7 @@ class TwitchCommands
   class Ask < TwitchCommands::Base
     def self.call(locals:)
       broadcast(
-        'ask_messages',
+        "ask_messages_#{locals[:channel]}",
         render(locals)
       )
     end

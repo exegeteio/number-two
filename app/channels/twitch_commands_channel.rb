@@ -1,6 +1,6 @@
 class TwitchCommandsChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "twitch_commands"
+    stream_from "twitch_commands_#{params['twitch_channel']}"
   end
 
   def unsubscribed
@@ -8,6 +8,6 @@ class TwitchCommandsChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    ChatCommandJob.perform_later(data)
+    ChatCommandJob.perform_later(data) if broadcast_to? data['channel']
   end
 end
