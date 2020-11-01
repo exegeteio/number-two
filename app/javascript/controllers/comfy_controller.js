@@ -23,7 +23,11 @@ export default class extends Controller {
   }
 
   init(channel, token) {
-    ComfyJS.Init(this.data.get('channel'), `oauth:${token}`);
+    ComfyJS.onError = (error) => {
+      console.log('ERROR:', error)
+      window.location = "/sign_out?return_to=/overlay";
+    };
+    ComfyJS.Init(this.data.get('channel'), `oauth:${token}`)
     this.welcomeTarget.textContent = `${channel} Dashboard`;
 
     ComfyJS.onChat = ( user, message, flags, self, extra ) => {

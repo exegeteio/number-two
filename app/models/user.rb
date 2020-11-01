@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # :database_authenticatable, :registerable,
   # :recoverable, :rememberable, :validatable,
-  devise :rememberable, :omniauthable, omniauth_providers: %i[twitch]
+  devise :rememberable, :timeoutable, :omniauthable, omniauth_providers: %i[twitch]
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
