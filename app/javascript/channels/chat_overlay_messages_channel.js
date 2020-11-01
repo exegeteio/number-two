@@ -10,7 +10,7 @@ export const buildChatOverlayMessagesChannel = function(twitch_channel) {
     {
       connected() {
         // Called when the subscription is ready for use on the server
-        console.log("ChatOverlayMessagesChannel connected")
+        console.log(`ChatOverlayMessagesChannel connected: ${twitch_channel}`);
       },
 
       disconnected() {
