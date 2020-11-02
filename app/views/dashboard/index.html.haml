@@ -1,12 +1,5 @@
 - content_for :title do
   Dashboard
-%nav
-  %section.right
-    %ul
-      %li
-        %a{href: destroy_user_session_path} ‍Sign Out 👩‍💻
-      %li
-        %a{href: overlay_index_url(channel: current_user&.username), target: :_blank} Overlay 🔗
 .container
   = render 'twitch_auth'
 .container

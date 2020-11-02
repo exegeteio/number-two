@@ -13,7 +13,23 @@
     %link{href: "https://fonts.googleapis.com/css?family=Press+Start+2P", rel: :stylesheet}
     %link{href: "https://unpkg.com/nes.css@2.3.0/css/nes.min.css", rel: :stylesheet}
   %body
-    .alerts
-      %p.notice= notice
-      %p.alert= alert
+    %nav
+      %section.right
+        %ul
+          - if current_user.present?
+            %li
+              %a{href: destroy_user_session_path} ‍Sign Out 👩‍💻
+            %li
+              %a.nes-btn.is-success{href: overlay_index_url(channel: current_user&.username), target: :_blank}
+                Open Overlays
+          - else
+            %li
+              %a#signin.nes-btn.is-primary{href: new_user_session_path}
+                %i.nes-icon.twitch
+                %span Sign In
+    .alerts.nes-container.is-centered<
+      - if notice.present?
+        %p.notice.nes-text.is-success= notice
+      - if alert.present?
+        %p.alert.nes-text.is-error= alert
     = yield

@@ -17,3 +17,25 @@
 body {
   padding: 1rem;
 }
+.alerts:empty {
+  display: none;
+}
+
+nav {
+  .right {
+    text-align: right;
+  }
+  ul {
+    list-style: none;
+    li {
+      margin-bottom: 1rem;
+      #signin {
+        display: inline-flex;
+        align-items: center;
+        span {
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
+}

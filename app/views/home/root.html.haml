@@ -1,2 +1,49 @@
-%h1 Home#root
-%p Find me in app/views/home/root.html.erb
+%h1 Welcome!
+
+%p
+  "Number Two" is a companion app I made for my
+  %a{href: 'https://twitch.tv/exegete46', alt: 'Exegete46 twitch channel'}<
+    Twitch channel.
+  I liked it enough that I thought, "Why not make it available for others?"
+%p
+  At the moment, the following things work:
+  %ul.nes-list.is-disc
+    %li Chat overlay with Twitch emotes and user avatars.
+    %li !ask command for asking questions.
+    %li !todo for adding todos and showing a current todo overlay.
+%p
+  I hope to implement the following things:
+  %ul.nes-list.is-disc
+    %li Multiple themes.
+
+%h2 Why does it look so pixelated?
+%p
+  You're seeing a CSS framework called
+  %a{href: 'https://nostalgic-css.github.io/NES.css/', alt: 'NES CSS Framework', target: :_blank}<
+    NES.css.
+  It's using a font called
+  %a{href: 'https://fonts.google.com/specimen/Press+Start+2P', alt: 'Press Start 2P on Google Fonts', target: :_blank}<
+    Press Start 2P
+  hosted by Google Fonts.
+
+%h2 What about my info!?
+%p
+  This app collects your email address, username, and profile picture URL
+  in its database.  Otherwise, it does not intentionally store any info.
+%p
+  There is a session cookie for storing whether or not you've signed in,
+  and another cookie to store your oauth token from Twitch.  This is
+  not stored on the server side.
+%p
+  If you would like more information about how this app works, it is
+  %a{href: 'https://github.com/exegete46/number-two', target: :_blank, alt: 'Github project link'}<
+    open source
+  so you can poke at it, or even run it on some other server.
+
+%h2 Can you make it do ...
+%p
+  That is a dafinative:  Maybe.  This is a hobby project, but if you have
+  suggestions, feel free to
+  %a{href: 'https://github.com/exegete46/number-two/issues', target: :_blank, alt: 'Github issues'}
+    file an issue
+  on Github.
