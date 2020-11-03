@@ -24,6 +24,7 @@ gem 'redis', '~> 4.0'
 # Use devise for authentication.
 gem 'devise'
 gem 'omniauth-twitch'
+gem 'sidekiq'
 
 # Postgres database adapter gem.
 gem 'pg'

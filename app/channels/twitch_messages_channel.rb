@@ -1,6 +1,6 @@
 class TwitchMessagesChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "twitch_messages_#{params['twitch_channel']}"
+    stream_from "twitch_messages_#{connection.current_user.username}"
   end
 
   def unsubscribed
