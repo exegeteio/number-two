@@ -2,7 +2,7 @@
   = render partial: 'todos/todo_message', locals: {todo: todo}
   %div
     = form_for todo, url: todo_promote_path(todo), remote: true do |f|
-      %input.nes-btn.is-primary{type: :submit, value: 'Promote'}
+      %input.nes-btn.is-primary{type: :submit, value: todo.active? ? 'Recall' : 'Promote'}
     = form_for todo, url: todo_complete_path(todo), remote: true do |f|
       %input.nes-btn.is-success{type: :submit, value: 'Complete'}
     - unless todo.active?

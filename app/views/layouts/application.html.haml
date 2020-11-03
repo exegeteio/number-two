@@ -19,9 +19,6 @@
           - if current_user.present?
             %li
               %a{href: destroy_user_session_path} ‍Sign Out 👩‍💻
-            %li
-              %a.nes-btn.is-success{href: overlay_index_url(channel: current_user&.username), target: :_blank}
-                Open Overlays
           - else
             %li
               %a#signin.nes-btn.is-primary{href: new_user_session_path}
