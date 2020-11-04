@@ -13,8 +13,6 @@ import { twitchMessagesChannel } from "../channels/twitch_messages_channel"
 import { twitchCommandsChannel } from "../channels/twitch_commands_channel"
 
 export default class extends Controller {
-  static targets = ['signIn', 'signOut', 'welcome']
-
   connect() {
     this.init(
       this.data.get('channel'),
@@ -28,7 +26,6 @@ export default class extends Controller {
       window.location = "/sign_out?return_to=/overlay";
     };
     ComfyJS.Init(this.data.get('channel'), `oauth:${token}`)
-    this.welcomeTarget.textContent = `${channel} Dashboard`;
 
     ComfyJS.onChat = ( user, message, flags, self, extra ) => {
       twitchMessagesChannel.send({
