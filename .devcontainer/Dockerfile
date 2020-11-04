@@ -1,5 +1,6 @@
 ARG VARIANT=2.7
 FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT} AS devcontainer
+ENV PORT=3000
 
 # Install Rails
 RUN gem install rails webdrivers 
