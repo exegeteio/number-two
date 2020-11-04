@@ -22,9 +22,6 @@ services:
     depends_on:
       - postgres
       - redis
-    links:
-      - postgres
-      - redis
     environment:
       DATABASE_URL: postgres://postgres:postgres@postgres:5432/number_two_dev
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
