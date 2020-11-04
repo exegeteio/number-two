@@ -1,4 +1,4 @@
-ARG VARIANT=2
+ARG VARIANT=2.7
 FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT} AS devcontainer
 
 # Install Rails
@@ -13,9 +13,8 @@ RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSI
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
 # [Optional] Uncomment this line to install additional gems.
-RUN rvm install ruby-2.7.1 && gem install rubocop bundle-audit
+RUN gem install rubocop bundle-audit
 WORKDIR /workspace
-RUN bundle install
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1

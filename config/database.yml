@@ -3,20 +3,13 @@ default: &default
   encoding: unicode
   pool: 5
   timeout: 5000
+  url: <%= ENV['DATABASE_URL'] %>
 
 development:
   <<: *default
-  username: postgres
-  password: postgres
-  host: localhost
-  database: number_two_development
 
 test:
   <<: *default
-  username: postgres
-  password: postgres
-  host: localhost
-  database: number_two_test
 
 production:
   <<: *default
