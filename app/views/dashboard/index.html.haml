@@ -2,20 +2,34 @@
   Dashboard
 
 .comfy{data: {controller: :comfy, 'comfy-client-id': ENV['TWITCH_CLIENT_ID'], 'comfy-channel': current_user.username, 'comfy-token': twitch_token}}
+
+.nes-container.is-rounded.is-centered
+  %p.nes-text.is-error
+    You must leave the Dashboard (this page) open while broadcasting.
+
 .nes-container.is-rounded
   %h2 !ask
   %p
     Questions from your viewers who used the !ask command.
   %ul#ask_list{data: {controller: :ask, target: 'ask.questions', 'ask-channel': current_user&.username}}
+
 .nes-container.is-rounded
   %h2 !todo
   %p
     Streamer can set their own todo list using the !todo command.
   %ul#todo_list{data: {controller: :todo, target: 'todo.container'}}
     = render @todos
+
 .nes-container.is-rounded.is-centered
   %h2 Overlays
-  %a.nes-btn.is-success{href: overlay_index_url(channel: current_user&.username), target: :_blank}
-    Open Overlays
   %p
     Use this URL as a browser source in your streaming software.
+  %div.nes-field.is-inline{data: {controller: :copyable}}
+    %input.nes-input.is-centered{data: {target: 'copyable.value'}, readonly: true, value: overlay_index_url(channel: current_user&.username)}
+    &nbsp;
+    %button.nes-btn.is-success{data: {action: 'copyable#copy'}} Copy
+  %p
+    Or 
+    %a{href: overlay_index_url(channel: current_user&.username), target: :_blank}<
+      open overlays
+    in another tab.
