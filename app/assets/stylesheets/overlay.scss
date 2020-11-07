@@ -52,9 +52,9 @@
           padding: 0.25rem;
           min-width: 4rem;
           max-width: 576px;
-          overflow: hidden;
           text-align: center;
           background-color: rgba(255, 255, 255, 0.7);
+          overflow-wrap: break-word;
           img {
             max-width: 48px;
           }
