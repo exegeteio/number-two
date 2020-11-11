@@ -5,7 +5,7 @@ class ChatMessageComponent < ViewComponent::Base
   attr_accessor :id, :message, :user, :user_color, :avatar_url
 
   def initialize(id:, message:, user:, user_color:, avatar_url:)
-    super()
+    super
     @id = id
     @message = message
     @user = user

@@ -18,7 +18,7 @@
   %p
     Streamer can set their own todo list using the !todo command.
   %ul#todo_list{data: {controller: :todo, target: 'todo.container'}}
-    = render @todos
+    = render TodoComponent.with_collection(@todos)
 
 .nes-container.is-rounded.is-centered
   %h2 Overlays

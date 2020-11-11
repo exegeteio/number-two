@@ -8,14 +8,10 @@ class TodoBroadcasterJob < ApplicationJob
         id: todo.id,
         status: todo.status,
         html: ApplicationController.render(
-          partial: 'todos/todo',
-          layout: false,
-          locals: { todo: todo }
+          TodoComponent.new(todo: todo)
         ),
         message_html: ApplicationController.render(
-          partial: 'todos/todo_message',
-          layout: false,
-          locals: { todo: todo }
+          TodoMessageComponent.new(todo: todo)
         )
       }
     )
