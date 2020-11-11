@@ -1,5 +1,5 @@
 %li.nes-container.is-rounded{data: {controller: "ask-message", "ask-message-channel": channel}}
-  = render partial: 'twitch_commands/question', locals: {user_color: user_color, user: user, message: message}
+  = render AskMessageComponent.new(message: message, user: user, user_color: user_color)
   %div
     %button.nes-btn.is-primary{data: {action: 'click->ask-message#promote'}}
       Promote
@@ -7,3 +7,4 @@
       Complete
     %button.nes-btn.is-warning{data: {target: 'ask-message.delete', action: 'click->ask-message#delete'}}
       Delete
+

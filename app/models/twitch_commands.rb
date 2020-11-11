@@ -2,8 +2,8 @@
 class TwitchCommands
   def self.call(command:, locals:, user:)
     "TwitchCommands::#{command.titleize}".constantize.call(user: user, locals: locals)
-  rescue NameError
-    Rails.logger.error("Unable to find matching command: #{command}")
+  rescue NameError => e
+    Rails.logger.error("Unable to find matching command: #{command} - #{e.message}")
   end
 
   class Base
@@ -11,11 +11,12 @@ class TwitchCommands
       ActionCable.server.broadcast(channel, content)
     end
 
-    def self.render(locals)
-      ApplicationController.new.render_to_string(
-        partial: to_s.underscore,
-        locals: locals
-      )
+    def self.render(_locals)
+      raise NotImplementedError, "You must implement the #render method on #{self}"
+    end
+
+    def self.renderer
+      ApplicationController.new
     end
 
     def self.mod?(locals)
