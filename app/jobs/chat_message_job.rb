@@ -4,7 +4,7 @@ class ChatMessageJob < ApplicationJob
   BANNED_USERS = %w[pretzelrocks nightbot b3_bot].freeze
 
   def perform(args)
-    args['avatar'] = avatar_for args['user']
+    args['avatar_url'] = avatar_for args['user']
     unless BANNED_USERS.include? args['user'].downcase
       ActionCable.server.broadcast(
         "chat_overlay_messages_#{args['channel']}",
@@ -24,16 +24,16 @@ class ChatMessageJob < ApplicationJob
 
   def render(args)
     ApplicationController.new.render_to_string(
-      partial: 'messages/chat',
-      locals: get_locals(args)
+      ChatMessageComponent.new(
+        get_locals(args)
+      )
     )
   end
 
   def get_locals(args)
     {
       id: args['id'],
-      avatar: args['avatar'],
-      highlighted: args['highlighted'],
+      avatar_url: args['avatar_url'],
       message: process_emotes(args['message'], args['messageEmotes']),
       user_color: args['userColor'],
       user: args['user']
