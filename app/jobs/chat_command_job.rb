@@ -4,19 +4,22 @@
 class ChatCommandJob < ApplicationJob
   queue_as :default
 
-  def perform(args, user)
-    args.transform_keys! { |k| k.underscore.to_sym }
-    handlers[args[:command]].call(
-      command: args[:command],
+  def perform(user, id, channel, command, message, username, user_color)
+    handlers[command].call(
+      command: command,
       user: user,
-      locals: args
+      id: id,
+      channel: channel,
+      message: message,
+      username: username,
+      user_color: user_color
     )
   end
 
   private
 
   def default_handler
-    ->(command:, user:, locals:) do
+    ->(command:, user:, id:, channel:, message:, username:, user_color:) do
       Rails.logger.error("Unable to find matching command: #{command}")
     end
   end
@@ -24,21 +27,21 @@ class ChatCommandJob < ApplicationJob
   def handlers
     @handlers ||= HashWithIndifferentAccess.new
     @handlers.default = default_handler
-    @handlers[:ask] = ->(command:, user:, locals:) do
-      Ask.create_or_find_by!(message_id: locals[:id]) do |t|
-        t.user_name = locals[:username]
-        t.user_color = locals[:user_color]
-        t.message = locals[:message]
-        t.channel = locals[:channel]
+    @handlers[:ask] = ->(command:, user:, id:, channel:, message:, username:, user_color:) do
+      Ask.create_or_find_by!(message_id: id) do |t|
+        t.user_name = username
+        t.user_color = user_color
+        t.message = message
+        t.channel = channel
       end
     end
-    @handlers[:todo] = ->(command:, user:, locals:) do
-      return unless locals[:username] == user.username
+    @handlers[:todo] = ->(command:, user:, id:, channel:, message:, username:, user_color:) do
+      return unless username == user.username
 
-      Todo.create_or_find_by!(message_id: locals[:id]) do |t|
-        t.username = locals[:username]
-        t.message = locals[:message]
-        t.channel = locals[:channel]
+      Todo.create_or_find_by!(message_id: id) do |t|
+        t.username = username
+        t.message = message
+        t.channel = channel
       end
     end
     @handlers

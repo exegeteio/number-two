@@ -19,6 +19,7 @@ export const buildChatOverlayMessagesChannel = function(twitch_channel) {
       },
 
       received(data) {
+        console.log('chat_overlay_messages_channel', data);
         if (data.cableReady) CableReady.perform(data.operations);
       }
     }

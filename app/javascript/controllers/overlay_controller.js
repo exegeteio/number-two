@@ -10,6 +10,7 @@
 import { Controller } from "stimulus"
 import { buildCurrentAskChannel } from "../channels/current_ask_channel"
 import { buildCurrentTodoChannel } from "../channels/current_todo_channel"
+import { buildChatOverlayMessagesChannel } from "../channels/chat_overlay_messages_channel"
 
 export default class extends Controller {
   connect() {
@@ -17,5 +18,6 @@ export default class extends Controller {
 
     buildCurrentAskChannel(channel);
     buildCurrentTodoChannel(channel);
+    buildChatOverlayMessagesChannel(channel);
   }
 }

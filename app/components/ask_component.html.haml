@@ -1,4 +1,4 @@
-%li.nes-container.is-rounded{id: "ask-#{ask.id}", class: ask.status, data: {controller: "ask"}}
+%li.nes-container.is-rounded{id: "ask-#{ask.id}", class: ask.status, data: {controller: :ask}}
   = render AskMessageComponent.new(ask: ask)
   %div
     - if ask.active?

@@ -8,15 +8,14 @@
 // </div>
 
 import { Controller } from "stimulus"
-import { buildChatOverlayMessagesChannel } from "../channels/chat_overlay_messages_channel"
 
 export default class extends Controller {
   static targets = ['messages']
 
   connect() {
-    let chatOverlayMessagesChannel = buildChatOverlayMessagesChannel(this.data.get('channel'));
-    chatOverlayMessagesChannel.received = (data) => {
-      this.messagesTarget.insertAdjacentHTML('beforeend', data)
-    }
+    // let chatOverlayMessagesChannel = buildChatOverlayMessagesChannel(this.data.get('channel'));
+    // chatOverlayMessagesChannel.received = (data) => {
+    //   this.messagesTarget.insertAdjacentHTML('beforeend', data)
+    // }
   }
 }

@@ -5,5 +5,5 @@
 #ask_overlay.overlay.nes-container.is-rounded.with-title<
   = render AskMessageComponent.new(ask: @ask) if @ask
 #chat_overlay.overlay{data: {controller: :chat, 'chat-channel': @channel}}<
-  %section.message-list{data: {target: 'chat.messages'}}
+  %section#chat_message_list.message-list{data: {target: 'chat.messages'}}<
 #overlay{data: {controller: 'overlay', 'overlay-channel': @channel}}

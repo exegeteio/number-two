@@ -7,15 +7,14 @@
 //   <h1 data-target="comfy.output"></h1>
 // </div>
 
-import { Controller } from "stimulus"
+import ApplicationController from './application_controller'
 require("comfy.js")
-import { twitchMessagesChannel } from "../channels/twitch_messages_channel"
-import { twitchCommandsChannel } from "../channels/twitch_commands_channel"
 import { buildAskMessagesChannel } from "../channels/ask_messages_channel"
 import { buildTodoMessagesChannel } from "../channels/todo_messages_channel"
 
-export default class extends Controller {
+export default class extends ApplicationController {
   connect() {
+    super.connect()
     let channel = this.data.get('channel');
 
     buildAskMessagesChannel(channel);
@@ -35,22 +34,26 @@ export default class extends Controller {
     ComfyJS.Init(this.data.get('channel'), `oauth:${token}`)
 
     ComfyJS.onChat = ( user, message, flags, self, extra ) => {
-      twitchMessagesChannel.send({
-        ... flags,
-        ... extra,
-        user: user,
-        message: message,
-      })
+      console.log(extra);
+      this.stimulate('Twitch#chat', 
+        extra.id,
+        extra.channel,
+        message,
+        extra.messageEmotes,
+        user,
+        extra.userColor
+      );
     }
 
     ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
-      twitchCommandsChannel.send({
-        ... flags,
-        ... extra,
-        command: command,
-        user: user,
-        message: message,
-      })
+      this.stimulate('Twitch#command', 
+        extra.id,
+        extra.channel,
+        command,
+        message,
+        user,
+        extra.userColor
+      );
     }
   }
 }

@@ -1,16 +1,25 @@
+# Class for rendering and rebroadcasting chat.
 class ChatMessageJob < ApplicationJob
   queue_as :default
 
   BANNED_USERS = %w[pretzelrocks nightbot b3_bot].freeze
 
-  def perform(args)
-    args['avatar_url'] = avatar_for args['user']
-    unless BANNED_USERS.include? args['user'].downcase
-      ActionCable.server.broadcast(
-        "chat_overlay_messages_#{args['channel']}",
-        render(args)
+  def perform(id, channel, message, message_emotes, username, user_color)
+    return if BANNED_USERS.include? username.downcase
+
+    ChatBroadcasterJob.perform_later(
+      channel,
+      renderer.render(
+        ChatMessageComponent.new(
+          id: id,
+          message: process_emotes(message, message_emotes),
+          user: username,
+          avatar_url: avatar_for(username),
+          user_color: user_color
+        )
       )
-    end
+    )
+
   end
 
   private
@@ -20,24 +29,6 @@ class ChatMessageJob < ApplicationJob
       Rails.logger.debug "Cache miss for #{username}."
       $TWITCH.get_users(login: username).data.first.profile_image_url
     end
-  end
-
-  def render(args)
-    ApplicationController.new.render_to_string(
-      ChatMessageComponent.new(
-        get_locals(args)
-      )
-    )
-  end
-
-  def get_locals(args)
-    {
-      id: args['id'],
-      avatar_url: args['avatar_url'],
-      message: process_emotes(args['message'], args['messageEmotes']),
-      user_color: args['userColor'],
-      user: args['user']
-    }
   end
 
   def process_emotes(message, emotes)

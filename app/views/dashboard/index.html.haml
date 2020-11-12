@@ -1,7 +1,7 @@
 - content_for :title do
   Dashboard
 
-.comfy{data: {controller: :comfy, 'comfy-client-id': ENV['TWITCH_CLIENT_ID'], 'comfy-channel': current_user.username, 'comfy-token': twitch_token}}
+.dashboard{data: {controller: :dashboard, 'dashboard-client-id': ENV['TWITCH_CLIENT_ID'], 'dashboard-channel': current_user.username, 'dashboard-token': twitch_token}}
 
 .nes-container.is-rounded.is-centered
   %p.nes-text.is-error

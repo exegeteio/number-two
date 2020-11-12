@@ -1,4 +1,4 @@
-%li.nes-container.is-rounded{id: "todo-#{todo.id}", class: todo.status, data: {controller: "todo"}}
+%li.nes-container.is-rounded{id: "todo-#{todo.id}", class: todo.status, data: {controller: :todo}}
   = render TodoMessageComponent.new(todo: todo)
   %div
     - if todo.active?
