@@ -5,8 +5,20 @@ class AskReflex < ApplicationReflex
   before_reflex :set_ask
 
   def promote
-    Ask.active.where(channel: current_user.username).update(status: :pending)
+    Ask.where(status: :active, channel: current_user.username).update(status: :pending)
     @ask.active!
+  end
+
+  def recall
+    @ask.pending!
+  end
+
+  def complete
+    @ask.deleted!
+  end
+
+  def delete
+    @ask.deleted!
   end
 
   private

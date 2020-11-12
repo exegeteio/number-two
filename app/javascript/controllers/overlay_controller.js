@@ -3,16 +3,17 @@
 // 
 // This example controller works with specially annotated HTML like:
 //
-// <div data-controller="hello">
-//   <h1 data-target="hello.output"></h1>
+// <div data-controller="comfy">
+//   <h1 data-target="comfy.output"></h1>
 // </div>
 
 import { Controller } from "stimulus"
+import { buildCurrentAskChannel } from "../channels/current_ask_channel"
 
 export default class extends Controller {
-  static targets = [ "output" ]
-
   connect() {
-    this.outputTarget.textContent = 'Hello, Stimulus!'
+    let channel = this.data.get('channel');
+
+    buildCurrentAskChannel(channel);
   }
 }

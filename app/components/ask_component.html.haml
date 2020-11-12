@@ -1,12 +1,14 @@
-%li.nes-container.is-rounded{id: "ask-#{ask.id}", data: {controller: "ask-message", "ask-message-channel": ask.channel}}
+%li.nes-container.is-rounded{id: "ask-#{ask.id}", class: ask.status, data: {controller: "ask"}}
   = render AskMessageComponent.new(ask: ask)
   %div
-    %button.nes-btn.is-primary{data: {controller: :ask, reflex: 'click->AskReflex#promote', id: ask.id}}
-      Promote
-    %button.nes-btn.is-primary{data: {action: 'click->ask-message#promote'}}
-      Promote
-    %button.nes-btn.is-success{data: {action: 'click->ask-message#complete'}}
-      Complete
-    %button.nes-btn.is-warning{data: {target: 'ask-message.delete', action: 'click->ask-message#delete'}}
-      Delete
+    - if ask.active?
+      %button.nes-btn.is-primary{data: {reflex: 'click->AskReflex#recall', id: ask.id}}
+        Recall
+      %button.nes-btn.is-success{data: {reflex: 'click->AskReflex#complete', id: ask.id}}
+        Complete
+    - else
+      %button.nes-btn.is-primary{data: {reflex: 'click->AskReflex#promote', id: ask.id}}
+        Promote
+      %button.nes-btn.is-warning{data: {reflex: 'click->AskReflex#delete', id: ask.id}}
+        Delete
 

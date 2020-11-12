@@ -1,3 +1,4 @@
+import CableReady from 'cable_ready'
 import consumer from "./consumer"
 
 export const todoMessagesChannel = consumer.subscriptions.create("TodoMessagesChannel", {
@@ -10,6 +11,6 @@ export const todoMessagesChannel = consumer.subscriptions.create("TodoMessagesCh
   },
 
   received(data) {
-    // Called when there's incoming data on the websocket for this channel
+    if (data.cableReady) CableReady.perform(data.operations);
   }
 });

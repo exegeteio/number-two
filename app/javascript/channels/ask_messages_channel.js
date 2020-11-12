@@ -18,7 +18,6 @@ export const buildAskMessagesChannel = function (twitch_channel) {
       },
 
       received(data) {
-        console.log("TODO:  Remove this!", data);
         if (data.cableReady) CableReady.perform(data.operations);
       }
     }
