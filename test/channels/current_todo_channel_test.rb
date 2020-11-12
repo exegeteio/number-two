@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class CurrentTodoChannelTest < ActionCable::Channel::TestCase
   # test "subscribes" do

@@ -9,11 +9,13 @@
 
 import { Controller } from "stimulus"
 import { buildCurrentAskChannel } from "../channels/current_ask_channel"
+import { buildCurrentTodoChannel } from "../channels/current_todo_channel"
 
 export default class extends Controller {
   connect() {
     let channel = this.data.get('channel');
 
     buildCurrentAskChannel(channel);
+    buildCurrentTodoChannel(channel);
   }
 }

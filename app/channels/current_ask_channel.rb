@@ -6,11 +6,4 @@ class CurrentAskChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
-
-  def receive(data)
-    ActionCable.server.broadcast(
-      "current_ask_#{connection.current_user.username}",
-      data
-    )
-  end
 end

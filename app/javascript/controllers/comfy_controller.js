@@ -12,14 +12,14 @@ require("comfy.js")
 import { twitchMessagesChannel } from "../channels/twitch_messages_channel"
 import { twitchCommandsChannel } from "../channels/twitch_commands_channel"
 import { buildAskMessagesChannel } from "../channels/ask_messages_channel"
-import { buildCurrentAskChannel } from "../channels/current_ask_channel"
+import { buildTodoMessagesChannel } from "../channels/todo_messages_channel"
 
 export default class extends Controller {
   connect() {
     let channel = this.data.get('channel');
 
     buildAskMessagesChannel(channel);
-    buildCurrentAskChannel(channel);
+    buildTodoMessagesChannel(channel);
 
     this.init(
       channel,

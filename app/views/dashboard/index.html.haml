@@ -11,14 +11,14 @@
   %h2 !ask
   %p
     Questions from your viewers who used the !ask command.
-  %ul#ask_list{data: {controller: :ask, target: 'ask.questions', 'ask-channel': current_user&.username}}
+  %ul#ask_list{data: {controller: :ask}}
     = render AskComponent.with_collection(@asks)
 
 .nes-container.is-rounded
   %h2 !todo
   %p
     Streamer can set their own todo list using the !todo command.
-  %ul#todo_list{data: {controller: :todo, target: 'todo.container'}}
+  %ul#todo_list{data: {controller: :todo}}
     = render TodoComponent.with_collection(@todos)
 
 .nes-container.is-rounded.is-centered
