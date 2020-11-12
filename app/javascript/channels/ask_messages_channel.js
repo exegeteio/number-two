@@ -1,3 +1,4 @@
+import CableReady from 'cable_ready'
 import consumer from "./consumer"
 
 export const buildAskMessagesChannel = function (twitch_channel) {
@@ -17,7 +18,8 @@ export const buildAskMessagesChannel = function (twitch_channel) {
       },
 
       received(data) {
-        // Called when there's incoming data on the websocket for this channel
+        console.log("TODO:  Remove this!", data);
+        if (data.cableReady) CableReady.perform(data.operations);
       }
     }
   );

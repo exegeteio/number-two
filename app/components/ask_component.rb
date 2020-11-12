@@ -2,13 +2,12 @@
 
 # Component for displaying a message in the dashboard.
 class AskComponent < ViewComponent::Base
-  attr_accessor :message, :user, :user_color, :channel
+  attr_accessor :ask
 
-  def initialize(message:, user:, user_color:, channel:)
+  delegate :active?, to: :ask
+
+  def initialize(ask:)
     super
-    @message = message
-    @user = user
-    @user_color = user_color
-    @channel = channel
+    @ask = ask
   end
 end

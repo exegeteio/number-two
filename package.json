@@ -5,6 +5,7 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "cable_ready": "^4.4.0-pre2",
     "comfy.js": "^1.1.3",
     "stimulus": "^1.1.1",
     "stimulus_reflex": "3.3.0",

@@ -7,10 +7,10 @@ class TodoBroadcasterJob < ApplicationJob
       {
         id: todo.id,
         status: todo.status,
-        html: ApplicationController.render(
+        html: renderer.render(
           TodoComponent.new(todo: todo)
         ),
-        message_html: ApplicationController.render(
+        message_html: renderer.render(
           TodoMessageComponent.new(todo: todo)
         )
       }

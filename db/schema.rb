@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_021324) do
+ActiveRecord::Schema.define(version: 2020_11_11_212753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "asks", force: :cascade do |t|
+    t.string "user_name"
+    t.string "user_color"
+    t.string "message"
+    t.string "channel"
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.uuid "message_id", null: false
+    t.index ["channel"], name: "index_asks_on_channel"
+    t.index ["message_id"], name: "index_asks_on_message_id", unique: true
+  end
 
   create_table "todos", force: :cascade do |t|
     t.string "username"

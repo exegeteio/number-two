@@ -3,6 +3,6 @@ class DashboardController < ApplicationController
 
   def index
     @todos = Todo.pending.where(channel: current_user.username)
-    request.variant = :paper
+    @asks = Ask.pending.where(channel: current_user.username)
   end
 end

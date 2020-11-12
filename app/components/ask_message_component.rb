@@ -2,12 +2,10 @@
 
 # Class for rendering an ask message for the screen.
 class AskMessageComponent < ViewComponent::Base
-  attr_accessor :user, :user_color, :message
+  attr_accessor :ask
 
-  def initialize(user:, user_color:, message:)
+  def initialize(ask:)
     super
-    @user = user
-    @user_color = user_color
-    @message = message
+    @ask = ask
   end
 end

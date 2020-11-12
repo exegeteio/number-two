@@ -11,11 +11,14 @@ import { Controller } from "stimulus"
 require("comfy.js")
 import { twitchMessagesChannel } from "../channels/twitch_messages_channel"
 import { twitchCommandsChannel } from "../channels/twitch_commands_channel"
+import { buildAskMessagesChannel } from "../channels/ask_messages_channel"
 
 export default class extends Controller {
   connect() {
+    let channel = this.data.get('channel');
+    buildAskMessagesChannel(channel);
     this.init(
-      this.data.get('channel'),
+      channel,
       this.data.get('token')
     )
   }

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_name: MyString
+  user_color: MyString
+  message: MyString
+  channel: MyString
+
+two:
+  user_name: MyString
+  user_color: MyString
+  message: MyString
+  channel: MyString

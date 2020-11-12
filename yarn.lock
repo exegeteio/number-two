@@ -1674,6 +1674,13 @@ bytes@3.1.0:
   dependencies:
     morphdom "^2.6.1"
 
+cable_ready@^4.4.0-pre2:
+  version "4.4.0-pre2"
+  resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-4.4.0-pre2.tgz#8a970f9117425c5346218a900e24b74fd5d1ddea"
+  integrity sha512-p1PVlVpGW7WVQNrttcaStJ1c+wuoG4fRuyoJJ7hAloZPQu2koPpeO0R48J+iomq4ZRfOmCGTe6I49r/cg/8DJw==
+  dependencies:
+    morphdom "^2.6.1"
+
 cacache@^12.0.2:
   version "12.0.4"
   resolved "https://registry.yarnpkg.com/cacache/-/cacache-12.0.4.tgz#668bcbd105aeb5f1d92fe25570ec9525c8faa40c"

@@ -1,6 +1,8 @@
-%li.nes-container.is-rounded{data: {controller: "ask-message", "ask-message-channel": channel}}
-  = render AskMessageComponent.new(message: message, user: user, user_color: user_color)
+%li.nes-container.is-rounded{id: "ask-#{ask.id}", data: {controller: "ask-message", "ask-message-channel": ask.channel}}
+  = render AskMessageComponent.new(ask: ask)
   %div
+    %button.nes-btn.is-primary{data: {controller: :ask, reflex: 'click->AskReflex#promote', id: ask.id}}
+      Promote
     %button.nes-btn.is-primary{data: {action: 'click->ask-message#promote'}}
       Promote
     %button.nes-btn.is-success{data: {action: 'click->ask-message#complete'}}

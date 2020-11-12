@@ -69,3 +69,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'view_component', '~> 2.22', require: 'view_component/engine'
 
 gem "stimulus_reflex", "~> 3.3"
+
+gem "cable_ready", "~> 4.3"

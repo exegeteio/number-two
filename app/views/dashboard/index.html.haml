@@ -12,6 +12,7 @@
   %p
     Questions from your viewers who used the !ask command.
   %ul#ask_list{data: {controller: :ask, target: 'ask.questions', 'ask-channel': current_user&.username}}
+    = render AskComponent.with_collection(@asks)
 
 .nes-container.is-rounded
   %h2 !todo

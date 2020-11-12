@@ -284,6 +284,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   bundle-audit
   byebug
+  cable_ready (~> 4.3)
   capybara (>= 2.15)
   devise
   dotenv-rails
