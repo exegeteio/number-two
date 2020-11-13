@@ -8,9 +8,9 @@ class TwitchReflex < ApplicationReflex
     return unless broadcast_to? channel
     return if BANNED_USERS.include? username.downcase
 
-    ChatBroadcasterJob.perform_later(
-      channel,
-      render(
+    cable_ready["chat_overlay_messages_#{channel}"].insert_adjacent_html(
+      selector: '#chat_message_list',
+      html: render(
         ChatMessageComponent.new(
           id: id,
           message: TwitchMessage.process_emotes(message, message_emotes),
@@ -20,6 +20,7 @@ class TwitchReflex < ApplicationReflex
         )
       )
     )
+    cable_ready.broadcast
   end
 
   def command(id, channel, command, message, username, user_color)
