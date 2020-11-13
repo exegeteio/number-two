@@ -16,15 +16,12 @@ class TodoReflex < ApplicationReflex
 
   def recall
     @todo.pending!
-    cable_ready["current_todo_#{@todo.channel}"].inner_html(
-      selector: '#todo_overlay',
-      html: ''
-    )
-    cable_ready.broadcast
+    clear_overlay
   end
 
   def complete
     @todo.completed!
+    clear_overlay
   end
 
   def delete
@@ -32,6 +29,14 @@ class TodoReflex < ApplicationReflex
   end
 
   private
+
+  def clear_overlay
+    cable_ready["current_todo_#{@todo.channel}"].inner_html(
+      selector: '#todo_overlay',
+      html: ''
+    )
+    cable_ready.broadcast
+  end
 
   def update_todos
     morph '#todo_list', render(

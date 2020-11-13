@@ -3,18 +3,26 @@
 # Class for reacting to changes in the Ask box.
 class AskReflex < ApplicationReflex
   before_reflex :set_ask
+  after_reflex :update_asks
 
   def promote
     Ask.where(status: :active, channel: current_user.username).update(status: :pending)
     @ask.active!
+    cable_ready["current_ask_#{@ask.channel}"].inner_html(
+      selector: '#ask_overlay',
+      html: render(AskMessageComponent.new(ask: @ask))
+    )
+    cable_ready.broadcast
   end
 
   def recall
     @ask.pending!
+    clear_overlay
   end
 
   def complete
     @ask.deleted!
+    clear_overlay
   end
 
   def delete
@@ -22,6 +30,20 @@ class AskReflex < ApplicationReflex
   end
 
   private
+
+  def clear_overlay
+    cable_ready["current_ask_#{@ask.channel}"].inner_html(
+      selector: '#ask_overlay',
+      html: ''
+    )
+    cable_ready.broadcast
+  end
+
+  def update_asks
+    morph '#ask_list', render(
+      AskComponent.with_collection(Ask.pending.where(channel: @ask.channel))
+    )
+  end
 
   def set_ask
     @ask = Ask.find_by!(
