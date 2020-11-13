@@ -9,19 +9,13 @@
 
 import ApplicationController from './application_controller'
 require("comfy.js")
-import { buildAskMessagesChannel } from "../channels/ask_messages_channel"
-import { buildTodoMessagesChannel } from "../channels/todo_messages_channel"
 
 export default class extends ApplicationController {
   connect() {
     super.connect()
-    let channel = this.data.get('channel');
-
-    buildAskMessagesChannel(channel);
-    buildTodoMessagesChannel(channel);
 
     this.init(
-      channel,
+      this.data.get('channel'),
       this.data.get('token')
     )
   }
