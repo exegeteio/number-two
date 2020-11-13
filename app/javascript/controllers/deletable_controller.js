@@ -9,11 +9,13 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ['deletable']
-
   connect() {
+    let timeout = 120_000;
+    if (this.data.has('timeout')) {
+      timeout = parseInt(this.data.get("timeout")) * 1000;
+    }
     setTimeout(() => {
       this.element.remove();
-    }, 120_000);
+    }, timeout);
   }
 }

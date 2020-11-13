@@ -24,7 +24,7 @@
               %a#signin.nes-btn.is-primary{href: new_user_session_path}
                 %i.nes-icon.twitch
                 %span Sign In
-    .alerts.nes-container.is-centered<
+    .alerts.nes-container.is-rounded.is-centered{data: {controller: 'deletable', deletable: {timeout: 30}}}<
       - if notice.present?
         %p.notice.nes-text.is-success= notice
       - if alert.present?
