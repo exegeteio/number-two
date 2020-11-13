@@ -5,13 +5,5 @@ class ApplicationJob < ActiveJob::Base
   # Most jobs are safe to ignore if the underlying records are no longer available
   # discard_on ActiveJob::DeserializationError
 
-  private
-
-  def render_component(renderable, options = {})
-    renderer.render(renderable, options.reverse_merge({layout: false}))
-  end
-
-  def renderer
-    ApplicationController
-  end
+  delegate :render, to: ApplicationController
 end

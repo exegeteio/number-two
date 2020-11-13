@@ -34,8 +34,7 @@ export default class extends ApplicationController {
     ComfyJS.Init(this.data.get('channel'), `oauth:${token}`)
 
     ComfyJS.onChat = ( user, message, flags, self, extra ) => {
-      console.log(extra);
-      this.stimulate('Twitch#chat', 
+      this.stimulate('Twitch#chat',
         extra.id,
         extra.channel,
         message,
@@ -46,7 +45,7 @@ export default class extends ApplicationController {
     }
 
     ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
-      this.stimulate('Twitch#command', 
+      this.stimulate('Twitch#command',
         extra.id,
         extra.channel,
         command,
