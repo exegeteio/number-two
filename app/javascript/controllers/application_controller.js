@@ -43,7 +43,7 @@ export default class extends Controller {
   }
 
   reflexError (element, reflex, error, reflexId) {
-    // show error message etc...
+    console.log('reflexError', error, reflex);
   }
 
   afterReflex (element, reflex, noop, reflexId) {

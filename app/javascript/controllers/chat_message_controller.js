@@ -14,6 +14,6 @@ export default class extends Controller {
   connect() {
     setTimeout(() => {
       this.element.remove();
-    }, 45_000);
+    }, 120_000);
   }
 }

@@ -10,5 +10,6 @@ class ChatBroadcasterJob < ApplicationJob
       selector: '#chat_message_list',
       html: html
     )
+    cable_ready.broadcast
   end
 end

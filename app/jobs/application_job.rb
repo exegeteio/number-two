@@ -7,6 +7,10 @@ class ApplicationJob < ActiveJob::Base
 
   private
 
+  def render_component(renderable, options = {})
+    renderer.render(renderable, options.reverse_merge({layout: false}))
+  end
+
   def renderer
     ApplicationController
   end
