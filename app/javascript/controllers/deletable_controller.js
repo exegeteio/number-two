@@ -10,7 +10,7 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
   connect() {
-    let timeout = 120_000;
+    let timeout = 60_000;
     if (this.data.has('timeout')) {
       timeout = parseInt(this.data.get("timeout")) * 1000;
     }
