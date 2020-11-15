@@ -49,7 +49,7 @@ class TwitchReflex < ApplicationReflex
   end
 
   def default_handler
-    ->(command:, user:, id:, channel:, message:, username:, user_color:) do
+    lambda do |command:, user:, id:, channel:, message:, username:, user_color:|
       Rails.logger.error("Unable to find matching command: #{command}")
     end
   end
@@ -57,15 +57,15 @@ class TwitchReflex < ApplicationReflex
   def handlers
     @handlers ||= HashWithIndifferentAccess.new
     @handlers.default = default_handler
-    @handlers[:ask] = ->(command:, user:, id:, channel:, message:, username:, user_color:) do
+    @handlers[:ask] = lambda { |command:, user:, id:, channel:, message:, username:, user_color:|
       Ask.create_or_find_by!(message_id: id) do |t|
         t.user_name = username
         t.user_color = user_color
         t.message = message
         t.channel = channel
       end
-    end
-    @handlers[:todo] = ->(command:, user:, id:, channel:, message:, username:, user_color:) do
+    }
+    @handlers[:todo] = lambda { |command:, user:, id:, channel:, message:, username:, user_color:|
       return unless username == user.username
 
       Todo.create_or_find_by!(message_id: id) do |t|
@@ -73,7 +73,7 @@ class TwitchReflex < ApplicationReflex
         t.message = message
         t.channel = channel
       end
-    end
+    }
     @handlers
   end
 end

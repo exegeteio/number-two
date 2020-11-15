@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class AskMessageComponentTest < ViewComponent::TestCase
   def test_component_renders_something_useful

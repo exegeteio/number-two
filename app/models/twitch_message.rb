@@ -20,8 +20,6 @@ class TwitchMessage
     message
   end
 
-  private
-
   def self.emote_substitutions(message, emotes)
     substitutions = {}
     emotes.each do |emote_id, locations|
