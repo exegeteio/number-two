@@ -1,3 +1,18 @@
+# == Route Map
+#
+#                         Prefix Verb     URI Pattern                           Controller#Action
+#                           root GET      /                                     home#root
+#                dashboard_index GET      /dashboard(.:format)                  dashboard#index
+#                  overlay_index GET      /overlay(.:format)                    overlay#index
+#                   todo_promote PATCH    /todo/:id/promote(.:format)           todo#promote
+#                  todo_complete PATCH    /todo/:id/complete(.:format)          todo#complete
+#                    todo_delete PATCH    /todo/:id/delete(.:format)            todo#delete
+# user_twitch_omniauth_authorize GET|POST /users/auth/twitch(.:format)          callbacks#passthru
+#  user_twitch_omniauth_callback GET|POST /users/auth/twitch/callback(.:format) callbacks#twitch
+#               new_user_session GET      /sign_in(.:format)                    redirect(301, /users/auth/twitch)
+#           destroy_user_session GET      /sign_out(.:format)                   devise/sessions#destroy
+#                    sidekiq_web          /sidekiq                              Sidekiq::Web
+
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
