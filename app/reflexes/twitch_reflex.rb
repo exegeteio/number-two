@@ -48,12 +48,14 @@ class TwitchReflex < ApplicationReflex
     end
   end
 
+  # rubocop:disable Lint/UnusedBlockArgument
   def default_handler
     lambda do |command:, user:, id:, channel:, message:, username:, user_color:|
       Rails.logger.error("Unable to find matching command: #{command}")
     end
   end
 
+  # rubocop:disable Metrics/AbcSize
   def handlers
     @handlers ||= HashWithIndifferentAccess.new
     @handlers.default = default_handler
@@ -76,4 +78,6 @@ class TwitchReflex < ApplicationReflex
     }
     @handlers
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Lint/UnusedBlockArgument
 end

@@ -15,7 +15,7 @@ class TwitchOauthApi < Faraday::Connection
   end
 
   def oauth_token
-    post("token?#{oauth_params}").body.dig('access_token')
+    post("token?#{oauth_params}").body['access_token']
   end
 
   private

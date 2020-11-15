@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Namespace for education todos.
 require 'securerandom'
 

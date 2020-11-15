@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 # Omniauth callbacks controller.
 class CallbacksController < Devise::OmniauthCallbacksController
+  # rubocop:disable Metrics/AbcSize
   def twitch
     @user = User.from_omniauth(request.env['omniauth.auth'])
     if @user.save!
@@ -9,6 +12,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: 'Twitch') if is_navigational_format?
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def failure
     redirect_to root_path

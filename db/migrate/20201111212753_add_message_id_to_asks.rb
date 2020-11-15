@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddMessageIdToAsks < ActiveRecord::Migration[6.0]
   def change
     add_column :asks, :message_id, :uuid, unique: true, null: false
