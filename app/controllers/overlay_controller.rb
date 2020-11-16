@@ -7,4 +7,8 @@ class OverlayController < ApplicationController
     @todo = Todo.active.where(channel: @channel).first
     @ask = Ask.active.where(channel: @channel).first
   end
+
+  def subpoints
+    @channel = params[:channel]
+  end
 end

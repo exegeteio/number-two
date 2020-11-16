@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   root 'home#root'
   resources :dashboard, only: :index
   resources :overlay, only: :index
+  get 'overlay/subpoints', to: 'overlay#subpoints'
 
   # Setting booleans on todos.
   patch 'todo/:id/promote', to: 'todo#promote', as: :todo_promote

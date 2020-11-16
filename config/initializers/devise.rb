@@ -276,7 +276,7 @@ Devise.setup do |config|
     :twitch,
     ENV['TWITCH_CLIENT_ID'],
     ENV['TWITCH_CLIENT_SECRET'],
-    scope: 'user:read:email chat:read chat:edit channel:moderate whispers:read whispers:edit channel:read:redemptions'
+    scope: 'user:read:email chat:read chat:edit channel:moderate whispers:read whispers:edit channel:read:redemptions channel:read:subscriptions'
   )
 
   # ==> Warden configuration

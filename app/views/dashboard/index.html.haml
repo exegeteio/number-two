@@ -1,11 +1,7 @@
 - content_for :title do
   Dashboard
 
-.dashboard{data: {controller: :dashboard, 'dashboard-client-id': ENV['TWITCH_CLIENT_ID'], 'dashboard-channel': current_user.username, 'dashboard-token': twitch_token}}
-
-.nes-container.is-rounded.is-centered
-  %p.nes-text.is-error
-    You must leave the Dashboard (this page) open while broadcasting.
+.dashboard{data: {controller: :dashboard, dashboard: {'client-id': ENV['TWITCH_CLIENT_ID'], channel: current_user.username, token: twitch_token, userid: twitch_userid}}}
 
 .nes-container.is-rounded
   %h2 !ask
@@ -23,6 +19,8 @@
 
 .nes-container.is-rounded.is-centered
   %h2 Overlays
+  %p.nes-text.is-error
+    You must leave the Dashboard (this page) open while broadcasting.
   %p
     Use this URL as a browser source in your streaming software.
   %div.nes-field.is-inline{data: {controller: :copyable}}
@@ -34,3 +32,8 @@
     %a{href: overlay_index_url(channel: current_user&.username), target: :_blank}<
       open overlays
     in another tab.
+  %h3 Subpoints
+  %div.nes-field.is-inline{data: {controller: :copyable}}
+    %input.nes-input.is-centered{data: {target: 'copyable.value'}, readonly: true, value: overlay_subpoints_url(channel: current_user&.username, size: 3)}
+    &nbsp;
+    %button.nes-btn.is-success{data: {action: 'copyable#copy'}} Copy
