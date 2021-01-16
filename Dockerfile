@@ -25,8 +25,7 @@ RUN apk add --update --no-cache --quiet \
 WORKDIR /app/
 
 COPY Gemfile Gemfile.lock /app/
-RUN bundle config --global frozen 1 \
-    && bundle install --quiet -j4 --retry 3 \
+RUN bundle install --quiet -j4 --retry 3 \
     # Remove unneeded files (cached *.gem, *.o, *.c)
     && rm -rf /usr/local/bundle/cache/*.gem \
     && find /usr/local/bundle/gems/ -name "*.c" -delete \
@@ -39,11 +38,9 @@ CMD bundle exec rails server -b 0.0.0.0 -p 5000
 FROM rails-builder AS builder
 
 COPY Gemfile Gemfile.lock /app/
-RUN rm -rf /usr/local/bundle \
-    && bundle config --global frozen 1 \
+RUN bundle config --global frozen 1 \
     && bundle config set without 'development test' \
     && bundle install --quiet -j4 --retry 3 \
-    # Remove unneeded files (cached *.gem, *.o, *.c)
     && rm -rf /usr/local/bundle/cache/*.gem \
     && find /usr/local/bundle/gems/ -name "*.c" -delete \
     && find /usr/local/bundle/gems/ -name "*.o" -delete
