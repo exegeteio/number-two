@@ -7,6 +7,21 @@ Chat overlay with Twitch emotes and user avatars.
 !ask command for asking questions.
 !todo for adding todos and showing a current todo overlay.
 
+## Install
+
+I recommend Docker to get up and running quickly.  With `docker` and `docker-compose` installed,
+get started by updating your local `yarn` packages:
+
+```sh
+$ docker-compose run --rm web yarn install --check-files
+```
+
+Then be sure to create and migrate your database:
+
+```sh
+$ docker-compose run --rm web rails db:create db:migrate
+```
+
 ## Stack
 
 Tool | Use | Version
