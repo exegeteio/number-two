@@ -24,3 +24,5 @@ Before beginning you must run a few commands to set up `node_modules` and your d
 - `docker-compose run --rm web yarn install --check-files`
 - `docker-compose run --rm web rails db:setup`
 
+You will also need to copy `.env-sample` to `.env`, and edit the values.
+
