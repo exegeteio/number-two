@@ -2,7 +2,7 @@
 
 # Class for handling inbound info from twitch.
 class TwitchReflex < ApplicationReflex
-  BANNED_USERS = %w[pretzelrocks nightbot b3_bot].freeze
+  BANNED_USERS = %w[pretzelrocks nightbot b3_bot streamlabs streamelements].freeze
 
   def chat(id, channel, message, message_emotes, username, user_color)
     return unless broadcast_to? channel
