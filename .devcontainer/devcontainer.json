@@ -25,6 +25,7 @@
 	"extensions": [
 		"ms-azuretools.vscode-docker",
 		"rebornix.Ruby",
+		"rvest.vs-code-prettier-eslint",
 		"walkme.ruby-extension-pack"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
