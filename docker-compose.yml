@@ -25,6 +25,7 @@ services:
       DATABASE_URL: postgres://postgres:postgres@postgres:5432/number_two_dev
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
       BINDING: 0.0.0.0
+      PORT: 5000
     restart: always
 volumes:
   pg-data:
