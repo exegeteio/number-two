@@ -43,6 +43,7 @@ class AskReflex < ApplicationReflex
     morph '#ask_list', render(
       AskComponent.with_collection(Ask.pending.where(channel: @ask.channel.downcase))
     )
+    cable_ready.broadcast
   end
 
   def set_ask
