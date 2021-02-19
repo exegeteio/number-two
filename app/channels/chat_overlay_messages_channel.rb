@@ -2,7 +2,7 @@
 
 class ChatOverlayMessagesChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "chat_overlay_messages_#{params['twitch_channel']}"
+    stream_from "chat_overlay_messages_#{params['twitch_channel'].downcase}"
   end
 
   def unsubscribed

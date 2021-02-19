@@ -6,9 +6,9 @@ class AskReflex < ApplicationReflex
   after_reflex :update_asks
 
   def promote
-    Ask.where(status: :active, channel: current_user.username).update(status: :pending)
+    Ask.where(status: :active, channel: @ask.channel.downcase).update(status: :pending)
     @ask.active!
-    cable_ready["current_ask_#{@ask.channel}"].inner_html(
+    cable_ready["current_ask_#{@ask.channel.downcase}"].inner_html(
       selector: '#ask_overlay',
       html: render(AskMessageComponent.new(ask: @ask))
     )
@@ -41,7 +41,7 @@ class AskReflex < ApplicationReflex
 
   def update_asks
     morph '#ask_list', render(
-      AskComponent.with_collection(Ask.pending.where(channel: @ask.channel))
+      AskComponent.with_collection(Ask.pending.where(channel: @ask.channel.downcase))
     )
   end
 
