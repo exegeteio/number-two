@@ -9,6 +9,10 @@ services:
       - pg-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
   web:
     build:
       context: ./
@@ -21,6 +25,7 @@ services:
       - ./:/app/
     depends_on:
       - postgres
+      - redis
     environment:
       DATABASE_URL: postgres://postgres:postgres@postgres:5432/number_two_dev
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
