@@ -48,8 +48,7 @@ class AskReflex < ApplicationReflex
 
   def set_ask
     @ask = Ask.find_by!(
-      id: element['data-id'],
-      channel: current_user.username
+      id: element['data-id']
     )
   end
 end
