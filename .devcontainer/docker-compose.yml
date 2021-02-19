@@ -12,6 +12,10 @@ services:
       # mounts are relative to the first file in the list, which is a level up.
     ports:
       - "3000"
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/number_two_dev
+      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
+      BINDING: 0.0.0.0
 
     # [Optional] Required for ptrace-based debuggers like C++, Go, and Rust
     # cap_add:

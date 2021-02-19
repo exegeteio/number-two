@@ -10,28 +10,27 @@
 	// 		"NODE_VERSION": "lts/*"
 	// 	}
 	// },
-	"dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+	"dockerComposeFile": [
+		"../docker-compose.yml",
+		"docker-compose.yml"
+	],
 	"service": "web",
-  "workspaceFolder": "/workspace",
-  "shutdownAction": "stopCompose",
-
+	"workspaceFolder": "/workspace",
+	"shutdownAction": "stopCompose",
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
+	"settings": {
 		"terminal.integrated.shell.linux": "/usr/bin/zsh"
 	},
-
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"rebornix.Ruby"
+		"ms-azuretools.vscode-docker",
+		"rebornix.Ruby",
+		"walkme.ruby-extension-pack"
 	],
-	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [ 3000 ],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "bundle install --path=vendor/bundle && yarn install --check-files && rails db:create db:migrate db:seed",
-
+	"postCreateCommand": "gem install bundler && bundle install --path=vendor/bundle && yarn install --check-files && rails db:create db:migrate db:seed",
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
-
 }
