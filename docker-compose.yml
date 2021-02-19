@@ -15,7 +15,6 @@ services:
       target: rails-builder
     stdin_open: true
     tty: true
-    network_mode: service:postgres
     ports:
       - "5000:5000"
     volumes:

@@ -17,3 +17,10 @@ Tool | Use | Version
 [NES.css](https://nostalgic-css.github.io/NES.css/) | Retro CSS Framework | 
 [Stimulus Reflex](https://docs.stimulusreflex.com/) | Websocket-based front-end framework | 
 [Docker](https://docs.docker.com/) | Containerized deployment env |
+
+## Getting Started
+Before beginning you must run a few commands to set up `node_modules` and your database:
+
+- `docker-compose run --rm web yarn install --check-files`
+- `docker-compose run --rm web rails db:setup`
+
