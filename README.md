@@ -1,22 +1,32 @@
 # Number Two
 [Number Two](https://2.exegete.me/) is a companion app I made for my Twitch channel. I liked it enough that I thought, "Why not make it available for others?"
 
-At the moment, the following things work:
+## Disclaimer
 
-Chat overlay with Twitch emotes and user avatars.
-!ask command for asking questions.
-!todo for adding todos and showing a current todo overlay.
+This is an personal education project.  The goal is to explore aspects of
+"Vanilla Rails".  Trying to do things The Rails Way™.  Thus there is a focus
+on using the Rails built-in tools, such as:
 
-## Stack
+- Minitest
+- ERB
+- ActionCable
+- StimulusJS
+- HOTwire (not *yet* a part of Rails, but[...](https://twitter.com/dhh/status/1341420143239450624?lang=en))
 
-Tool | Use | Version
----|---|---
-[Ruby](https://docs.ruby-lang.org/en/2.7.0/) | Dynamic programming lang | 2.7.2
-[Rails](https://api.rubyonrails.org/) | Web App Framework for Ruby | 6.0.3
-[Postgres](https://www.postgresql.org/docs/9.0/index.html) | Relational Database | 9
-[NES.css](https://nostalgic-css.github.io/NES.css/) | Retro CSS Framework | 
-[Stimulus Reflex](https://docs.stimulusreflex.com/) | Websocket-based front-end framework | 
-[Docker](https://docs.docker.com/) | Containerized deployment env |
+Also, because this is an education project, please make suggestions!  Feedback
+is **very** welcome, but please keep the above goals in mind.
+
+## Feature Goals
+
+- [] On-screen chat overlay.
+- [] On-screen `!ask` overlay.
+	- Anyone in chat can use the `!ask` command to put a question onto the
+		presenter's dashboard, where the presenter can "Promote" the question onto
+		screen, "Delete" the question, etc.
+- [] On-screen `!todo` overlay.
+	- Channel owners and moderators can use the `!todo` command to put a task
+		onto the presenter's dashboard, where the presenter can "Promote" the task
+		onto screen, "Delete" the task, etc.
 
 ## Getting Started
 
@@ -72,3 +82,13 @@ Testing is provided my Minitest, so to run tests use the Rails built in:
 rails test
 ```
 
+## Stack
+
+Tool | Use | Version
+---|---|---
+[Ruby](https://docs.ruby-lang.org/en/2.7.0/) | Dynamic programming lang | 2.7.2
+[Rails](https://api.rubyonrails.org/) | Web App Framework for Ruby | 6.1.2
+[Postgres](https://www.postgresql.org/docs/9.0/index.html) | Relational Database | 9
+[NES.css](https://nostalgic-css.github.io/NES.css/) | Retro CSS Framework | 
+[Hotwire](https://hotwire.dev/) | HTML Over The wire for DOM manipulation | 
+[Docker](https://docs.docker.com/) | Containerized deployment env |
