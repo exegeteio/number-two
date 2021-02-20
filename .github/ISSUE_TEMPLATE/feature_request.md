@@ -1,0 +1,25 @@
+---
+name: Feature Request
+about: Suggest an improvement / feature
+title: ''
+labels: ''
+assignees: ''
+
+---
+
+## Describe the Feature
+
+**Is your feature request related to a problem? Please describe.**
+A clear description of what the problem is. Ex. I'm always frustrated when [...]
+
+**Additional context**
+Add any other context or screenshots about the feature request here.
+
+## Describe the Technical Implementation of the Solution
+
+**Solution**
+Dev team to add solution that we'd like to implement here.
+
+**References**
+Any references to materials or help articles that may help in implementing this issue.
+
