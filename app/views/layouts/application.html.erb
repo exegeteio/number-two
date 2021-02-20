@@ -5,12 +5,24 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
+    <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet'>
+    <link href='https://unpkg.com/nes.css@2.3.0/css/nes.min.css' rel='stylesheet'>
   </head>
-
   <body>
+    <nav>
+      <section class='right'>
+        <ul>
+          <li>
+            <a class='nes-btn is-primary' href='/sign_in' id='signin'>
+              <i class='nes-icon twitch'></i>
+              <span>Sign In</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </nav>
     <%= yield %>
   </body>
 </html>
