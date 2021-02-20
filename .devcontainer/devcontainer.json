@@ -23,6 +23,8 @@
 	},
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
+		"aliariff.vscode-erb-beautify",
+		"esbenp.prettier-vscode",
 		"ms-azuretools.vscode-docker",
 		"rebornix.Ruby",
 		"rvest.vs-code-prettier-eslint",
