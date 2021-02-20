@@ -55,4 +55,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+# Hotwire for avoiding client-side JS.
 gem 'hotwire-rails', '~> 0.1.3'
+
+# Load .env files automagically into the ENV hash.
+gem 'dotenv-rails', groups: [:development, :test]
+

@@ -25,6 +25,7 @@
 	"extensions": [
 		"aliariff.vscode-erb-beautify",
 		"esbenp.prettier-vscode",
+		"fabiospampinato.vscode-todo-plus",
 		"ms-azuretools.vscode-docker",
 		"rebornix.Ruby",
 		"rvest.vs-code-prettier-eslint",
