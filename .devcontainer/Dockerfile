@@ -1,5 +1,5 @@
 ARG VARIANT=2.7
-FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT} AS devcontainer
+FROM mcr.microsoft.com/vscode/devcontainers/ruby:${VARIANT} AS devcontainer
 
 # Set up listening ports.
 EXPOSE 5000
@@ -7,7 +7,7 @@ ENV PORT 5000
 ENV BINDING 0.0.0.0
 
 # Install Rails
-RUN gem install rails webdrivers 
+RUN gem install bundler rails webdrivers 
 
 # Install a version of Node.js using nvm for dynamic front end content
 ARG NODE_VERSION="lts/*"
@@ -23,6 +23,7 @@ RUN gem install \
 	htmlbeautifier \
 	rubocop \
 	solargraph
+
 WORKDIR /workspace
 
 # [Optional] Uncomment this line to install global node packages.
