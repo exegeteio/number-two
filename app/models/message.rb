@@ -23,4 +23,7 @@ class Message < ApplicationRecord
 
   # TODO:  Add validation!
   validates_presence_of %i[channel content from_username]
+
+  # Only include messages updated within the last 5 minutes.
+  scope :recent, -> { where('updated_at > ?', 5.minutes.ago) }
 end
