@@ -1,0 +1,48 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id            :bigint           not null, primary key
+#  channel       :string
+#  content       :string
+#  from_username :string
+#  kind          :integer
+#  status        :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+# Use "default" as the default channel for testing.
+# No need to tie this to a specific channel such as exegete46.
+chat:
+  channel: default
+  kind: chat
+  status: active
+  from_username: Alice
+  content: Is this thing on?
+
+# For tests to ensure only the current channel is displayed.
+chat_other_channel:
+  channel: twitch
+  kind: chat
+  status: active
+  from_username: Alice
+  content: This is in the twitch channel.
+
+# Inactive chats should act like deleted chats.
+chat_inactive:
+  channel: default
+  kind: chat
+  status: inactive
+  from_username: Beatrix
+  content: This message is inactive.
+
+# Inactive chats should act like deleted chats.
+chat_deleted:
+  channel: default
+  kind: chat
+  status: deleted
+  from_username: Charlize
+  content: This message is deleted.
+
+# TODO:  Add Ask and Todo fixtures!!!!
