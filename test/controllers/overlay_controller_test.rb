@@ -11,9 +11,9 @@ class OverlayControllerTest < ActionDispatch::IntegrationTest
 
   test 'should include active chats' do
     assert_response :success
-    assert_select '#chats_overlay'
-    skip('TODO:  Once messages are implemented, check for their presence.')
-    assert_select '.chat', messages(:chat)
+    assert_select '#chats_overlay' do
+      assert_select '.message', Message.chat.count
+    end
   end
 
   test 'should include active ask' do

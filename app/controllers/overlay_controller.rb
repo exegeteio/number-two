@@ -7,7 +7,9 @@
 class OverlayController < ApplicationController
   before_action :set_channel
   def show
-    # TODO: Pull chats, current Ask, and current Todo.
+    recent = Message.recent.where(channel: @channel)
+    @chats = recent.chat
+    # TODO: Pull current Ask, and current Todo.
   end
 
   private
