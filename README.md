@@ -56,7 +56,7 @@ This should start the server listening on
 before starting the server:
 
 - `docker-compose run --rm web yarn install --check-files`
-- `docker-compose run --rm web rails db:setup`
+- `docker-compose run --rm web rails db:setup db:test:prepare`
 
 Once those are done, you can launch the server with:
 
