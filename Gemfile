@@ -59,5 +59,4 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'hotwire-rails', '~> 0.1.3'
 
 # Load .env files automagically into the ENV hash.
-gem 'dotenv-rails', groups: [:development, :test]
-
+gem 'dotenv-rails', groups: %i[development test]
