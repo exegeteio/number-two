@@ -23,15 +23,30 @@ class MessageTest < ActiveSupport::TestCase
     assert @chat.chat?
   end
 
-  test 'recent does not include messages 5 minutes old' do
+  test 'recent does not include chat messages beyond chat timeout' do
     @chat.touch
     assert_includes Message.recent, @chat
-    travel 5.minutes + 1.second
+    travel Message.chat_timeout + 1.second
     assert_not_includes Message.recent, @chat
   end
 
   test 'for_channel limits results to a specific channel' do
     # TODO:  Is there a way to do away with the "magic" number, 1?
     assert_equal Message.for_channel('twitch').count, 1
+  end
+
+  test 'expired includes chat messages beyond chat timeout' do
+    @chat.touch
+    assert_not_includes Message.expired, @chat
+    travel Message.chat_timeout + 1.second
+    assert_includes Message.expired, @chat
+  end
+
+  test 'expired does not include ask messages regardless of age' do
+    ask = messages(:ask)
+    ask.touch
+    assert_not_includes Message.expired, ask
+    travel Message.chat_timeout + 1.second
+    assert_not_includes Message.expired, ask
   end
 end
