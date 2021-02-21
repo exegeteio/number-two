@@ -1,3 +1,35 @@
 // Place all the styles related to the overlay controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body.overlay {
+  #messages {
+    width: 33%;
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    bottom: 1rem;
+    overflow: hide;
+    .message {
+      margin-bottom: 2rem;
+    }
+    .todo,
+    .ask {
+      position: fixed;
+      display: none;
+      left: 1rem;
+      width: 33%;
+      &.active {
+        display: block;
+      }
+    }
+    .ask.active {
+      bottom: 1rem;
+    }
+    .todo.active {
+      top: 1rem;
+      .title {
+        display: none;
+      }
+    }
+  }
+}
