@@ -1,6 +1,7 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
+  NewCops: disable
   Exclude:
     - 'bin/**/*'
     - 'node_modules/**/*'
