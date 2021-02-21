@@ -35,4 +35,10 @@ class Message < ApplicationRecord
 
   # Narrow by channel
   scope :for_channel, ->(channel) { where(channel: channel) }
+
+  # Destroy all expired messages.
+  after_create :queue_deletion
+  def queue_deletion
+    DeleteExpiredChatsJob.set(wait: chat_timeout).perform_later
+  end
 end
