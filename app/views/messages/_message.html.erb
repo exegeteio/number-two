@@ -1,8 +1,16 @@
 <div class="nes-container with-title is-rounded message <%= message.kind %> <%= message.status %>" id="<%= dom_id message %>">
-  <p class="title">
+  <p class="title username">
     <%= message.from_username %>
+  </p>
+  <p class="title kind">
+    <span class="nes-text <%= message_title_class message %>">
+      <%= message.kind %>
+    </span>
   </p>
   <p>
     <%= message.content %>
   </p>
+  <div class="controls">
+    TODO:  Add controls!
+  </div>
 </div>

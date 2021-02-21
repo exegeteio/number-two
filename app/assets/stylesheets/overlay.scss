@@ -11,6 +11,12 @@ body.overlay {
     overflow: hide;
     .message {
       margin-bottom: 2rem;
+      .title.kind {
+        display: none;
+      }
+      .controls {
+        display: none;
+      }
     }
     .todo,
     .ask {

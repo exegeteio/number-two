@@ -1,0 +1,42 @@
+// Place all the styles related to the dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.dashboard {
+  #messages {
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 1rem;
+    grid-auto-flow: dense;
+    .message {
+      margin-bottom: 2rem;
+      .title.username {
+        display: none;
+      }
+      &.chat {
+        grid-column: 3;
+        .controls {
+          display: none;
+        }
+        .title {
+          &.username {
+            display: table;
+          }
+          &.kind {
+            display: none;
+          }
+        }
+      }
+      &.controls {
+        display: block;
+      }
+      &.ask {
+        grid-column: 1;
+      }
+      &.todo {
+        grid-column: 2;
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<%= turbo_stream_from @channel %>
+<h1>Dashboard - <%= @channel %></h1>
+<div class="dashboard">
+  <section id="messages">
+    <%= render @messages %>
+  </section>
+</div>
