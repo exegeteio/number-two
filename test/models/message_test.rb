@@ -2,12 +2,12 @@
 #
 # Table name: messages
 #
-#  id            :bigint           not null, primary key
+#  id            :uuid             not null, primary key
 #  channel       :string
 #  content       :string
 #  from_username :string
-#  kind          :integer
-#  status        :integer
+#  kind          :integer          default("chat"), not null
+#  status        :integer          default("active"), not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
@@ -28,5 +28,10 @@ class MessageTest < ActiveSupport::TestCase
     assert_includes Message.recent, @chat
     travel 5.minutes + 1.second
     assert_not_includes Message.recent, @chat
+  end
+
+  test 'for_channel limits results to a specific channel' do
+    # TODO:  Is there a way to do away with the "magic" number, 1?
+    assert_equal Message.for_channel('twitch').count, 1
   end
 end

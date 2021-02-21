@@ -5,11 +5,11 @@
 # - Active Ask
 # - Active Todo
 class OverlayController < ApplicationController
+  layout 'overlay'
   before_action :set_channel
+
   def show
-    recent = Message.recent.where(channel: @channel)
-    @chats = recent.chat
-    # TODO: Pull current Ask, and current Todo.
+    @messages = Message.active.for_channel(@channel)
   end
 
   private

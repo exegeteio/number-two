@@ -1,15 +1,6 @@
 <%= turbo_stream_from @channel %>
 <%= turbo_frame_tag @channel do %>
-  <!-- TODO:  Actually make these output something! -->
-  <div id="ask_overlay">
-    <!-- TODO:  Put active Ask here. -->
-  </div>
-  <h2>Ask</h2>
-  <div id="todo_overlay">
-    <!-- TODO:  Put active Todo here. -->
-  </div>
-  <h2>Chats</h2>
   <div id="messages">
-    <%= render @chats %>
+    <%= render @messages %>
   </div>
 <% end %>

@@ -2,31 +2,32 @@ require 'test_helper'
 
 class OverlayControllerTest < ActionDispatch::IntegrationTest
   setup do
-    get overlay_url(channel: 'Exegete46')
+    @active_messages = Message.active.for_channel('default')
+    get overlay_url(channel: 'default')
   end
 
   test 'should get show' do
     assert_response :success
   end
 
-  test 'should include active chats' do
+  test 'should include recent active chats for the channel' do
     assert_response :success
-    assert_select '#chats_overlay' do
-      assert_select '.message', Message.chat.count
+    assert_select '#messages' do
+      assert_select '.chat', @active_messages.chat.count
     end
   end
 
-  test 'should include active ask' do
+  test 'should include active asks for the channel' do
     assert_response :success
-    assert_select '#ask_overlay'
-    skip('TODO:  Once messages are implemented, check for their presence.')
-    assert_select '#ask_overlay', messages(:ask_active)
+    assert_select '#messages' do
+      assert_select '.ask', @active_messages.ask.count
+    end
   end
 
-  test 'should include active todo' do
+  test 'should include active todos for the channel' do
     assert_response :success
-    assert_select '#todo_overlay'
-    skip('TODO:  Once messages are implemented, check for their presence.')
-    assert_select '#todo_overlay', messages(:todo_active)
+    assert_select '#messages' do
+      assert_select '.ask', @active_messages.todo.count
+    end
   end
 end

@@ -1,4 +1,4 @@
-<div class="message" id="<%= dom_id message %>">
+<div class="message <%= message.kind %> <%= message.status %>" id="<%= dom_id message %>">
   <div class="details">
     <%= message.content %>
   </div>

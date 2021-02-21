@@ -2,12 +2,12 @@
 #
 # Table name: messages
 #
-#  id            :bigint           not null, primary key
+#  id            :uuid             not null, primary key
 #  channel       :string
 #  content       :string
 #  from_username :string
-#  kind          :integer
-#  status        :integer
+#  kind          :integer          default("chat"), not null
+#  status        :integer          default("active"), not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
@@ -45,4 +45,34 @@ chat_deleted:
   from_username: Charlize
   content: This message is deleted.
 
-# TODO:  Add Ask and Todo fixtures!!!!
+# Inactive todo.
+todo:
+  channel: default
+  kind: todo
+  status: inactive
+  from_username: Darlene
+  content: Research HOTwire.
+
+# Active todo.
+todo_active:
+  channel: default
+  kind: todo
+  status: active
+  from_username: Erin
+  content: Review every line of JS in THIS app.
+
+# Inactive ask.
+ask:
+  channel: default
+  kind: ask
+  status: inactive
+  from_username: Fiona
+  content: Is Ruby dead?
+
+# Active ask.
+ask_active:
+  channel: default
+  kind: ask
+  status: active
+  from_username: Georgia
+  content: How can you do that with so little Javascript?
