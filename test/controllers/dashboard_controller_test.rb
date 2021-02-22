@@ -9,10 +9,10 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not include any chats' do
+  test 'should include all messages' do
     assert_response :success
     assert_select '#messages' do
-      assert_select '.chat:visible', 0
+      assert_select '.message', Message.for_channel('default').count
     end
   end
 end
