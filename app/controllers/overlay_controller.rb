@@ -9,7 +9,7 @@ class OverlayController < ApplicationController
   before_action :set_channel
 
   def show
-    @messages = Message.active.for_channel(@channel)
+    @messages = Message.for_channel(@channel)
   end
 
   private
