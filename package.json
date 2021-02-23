@@ -8,7 +8,8 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.2.1",
     "comfy.js": "^1.1.6",
-    "stimulus": "^2.0.0"
+    "stimulus": "^2.0.0",
+    "ws": "^7.4.3"
   },
   "version": "0.1.0",
   "devDependencies": {
