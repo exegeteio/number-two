@@ -7,3 +7,4 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/**/*'
     - 'db/**/*'
+    - 'config/initializes/devise.rb'

@@ -15,4 +15,12 @@ Rails.application.routes.draw do
 
   # Patch back to update messages.
   resources :messages, only: %i[update destroy]
+
+  # Setup devise.
+  devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
+  devise_scope :user do
+    # Dedicated redirects for sign in and out.
+    get 'sign_in', to: redirect('/users/auth/twitch'), as: :new_user_session
+    get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
+  end
 end

@@ -61,6 +61,9 @@ gem 'hotwire-rails', '~> 0.1.3'
 # Load .env files automagically into the ENV hash.
 gem 'dotenv-rails', groups: %i[development test]
 
-gem "devise", "~> 4.7"
+# Devise gems and Twitch auth.
+gem 'devise', '~> 4.7'
 
-gem "omniauth-twitch", "~> 1.1"
+# Devise was complaining about 2.0.  Try to upgrade later.
+gem 'omniauth', '~> 1.9.0'
+gem 'omniauth-twitch', '~> 1.1'
