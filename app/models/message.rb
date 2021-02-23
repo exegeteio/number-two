@@ -41,6 +41,16 @@ class Message < ApplicationRecord
   # Destroy all expired messages.
   after_update :ensure_unique_active_by_kind, if: :active?
 
+  def self.default_status_for(kind)
+    default_statuses[kind]
+  end
+
+  def self.default_statuses
+    default_statuses = Hash.new(:inactive)
+    default_statuses[:chat] = :active
+    default_statuses
+  end
+
   private
 
   def queue_deletion

@@ -7,7 +7,8 @@ class MessageChannel < ApplicationCable::Channel
       channel: data['channel'],
       from_username: data['from_username'],
       content: data['content'],
-      kind: data['kind']&.to_sym
+      kind: data['kind']&.to_sym,
+      status: Message.default_status_for(data['kind'].to_sym)
     )
   end
 end
