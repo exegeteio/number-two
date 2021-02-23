@@ -14,6 +14,10 @@
     <%= message.content %>
   </p>
   <div class="controls">
-    TODO:  Add controls!
+    <% if message.chat? %>
+      <%= render('/messages/chat_controls', message: message) %>
+    <% else %>
+      <%= render('/messages/activation_controls', message: message) %>
+    <% end %>
   </div>
 </div>

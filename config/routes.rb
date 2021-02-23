@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
   # Dashboard controller for a twitch creator to manage their stream.
   get 'dashboard/', to: 'dashboard#index', as: :dashboard
+
+  # Patch back to update messages.
+  resources :messages, only: %i[update destroy]
 end

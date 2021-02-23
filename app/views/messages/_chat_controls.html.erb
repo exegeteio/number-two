@@ -1,0 +1,11 @@
+<%= form_with model: message, remote: true do |f| %>
+  <%= f.hidden_field :kind, value: :ask %>
+  <%= f.hidden_field :status, value: :inactive %>
+  <input type="submit" class="nes-btn is-warning" value="Ask">
+<% end %>
+<%= form_with model: message, remote: true do |f| %>
+  <%= f.hidden_field :kind, value: :todo %>
+  <%= f.hidden_field :status, value: :inactive %>
+  <input type="submit" class="nes-btn is-success" value="Todo">
+<% end %>
+<%= link_to "Delete", message, method: :delete, remote: true, class: "nes-btn is-error" %>

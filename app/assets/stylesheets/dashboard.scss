@@ -16,9 +16,6 @@
       }
       &.chat {
         grid-column: 3;
-        .controls {
-          display: none;
-        }
         .title {
           &.username {
             display: table;
