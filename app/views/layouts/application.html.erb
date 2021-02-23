@@ -23,6 +23,20 @@
         </ul>
       </section>
     </nav>
+    <% if notice.present? or alert.present? %>
+      <section class="alerts nes-container is-rounded is-centered">
+        <% if notice.present? %>
+          <p class="notice nes-text is-success">
+            <%= notice %>
+          </p>
+        <% end %>
+        <% if alert.present? %>
+          <p class="alert nes-text is-error">
+            <%= alert %>
+          </p>
+        <% end %>
+      </section>
+    <% end %>
     <%= yield %>
   </body>
 </html>

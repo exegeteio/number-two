@@ -60,3 +60,7 @@ gem 'hotwire-rails', '~> 0.1.3'
 
 # Load .env files automagically into the ENV hash.
 gem 'dotenv-rails', groups: %i[development test]
+
+gem "devise", "~> 4.7"
+
+gem "omniauth-twitch", "~> 1.1"
