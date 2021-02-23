@@ -1,6 +1,8 @@
 # == Route Map
 #
 
+require 'sidekiq/web'
+
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
   # Root of the website.
@@ -22,5 +24,10 @@ Rails.application.routes.draw do
     # Dedicated redirects for sign in and out.
     get 'sign_in', to: redirect('/users/auth/twitch'), as: :new_user_session
     get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
+  end
+
+  # Route for viewing sidekiq.
+  authenticate :user, ->(u) { u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
   end
 end
