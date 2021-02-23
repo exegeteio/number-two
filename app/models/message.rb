@@ -14,28 +14,28 @@
 #  updated_at    :datetime         not null
 #
 class Message < ApplicationRecord
+  # Enabled broadcasts
+  include Turbo::Broadcastable
+
   # Set an expiration age for chat messages.
   class_attribute :chat_timeout, default: 5.minutes
-
   enum status: %i[active inactive deleted]
   enum kind: %i[chat ask todo]
 
-  # Broadcast messages via HOTwire.
-  include Turbo::Broadcastable
-  broadcasts_to :channel
+  # Default scope by :created_at since id us UUID.
+  default_scope -> { order(:created_at) }
+  # Only include messages updated within the last 5 minutes.
+  scope :recent, -> { where('updated_at > ?', chat_timeout.ago) }
+  # Expired is only for chats older than 5 minutes ago.
+  scope :expired, -> { chat.where('updated_at < ?', chat_timeout.ago) }
+  # Narrow by channel
+  scope :for_channel, ->(channel) { where(channel: channel) }
 
   # TODO:  Add validation!
   validates_presence_of %i[channel content from_username]
 
-  # Only include messages updated within the last 5 minutes.
-  scope :recent, -> { where('updated_at > ?', chat_timeout.ago) }
-
-  # Expired is only for chats older than 5 minutes ago.
-  scope :expired, -> { chat.where('updated_at < ?', chat_timeout.ago) }
-
-  # Narrow by channel
-  scope :for_channel, ->(channel) { where(channel: channel) }
-
+  # Callback for broadcast messages via HOTwire.
+  broadcasts_to :channel
   # Destroy all expired messages.
   after_create :queue_deletion
   # Destroy all expired messages.
