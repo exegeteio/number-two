@@ -14,6 +14,10 @@
       .title.username {
         display: none;
       }
+      h2,
+      .controls {
+        text-align: center;
+      }
       &.chat {
         grid-column: 3;
         .title {

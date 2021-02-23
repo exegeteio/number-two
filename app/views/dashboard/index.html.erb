@@ -1,8 +1,33 @@
 <%= turbo_stream_from @channel %>
 <h1>Dashboard - <%= current_user.username %></h1>
+<div class="instructions">
+</div>
 <div class="dashboard">
   <section id="messages">
+    <div class="message ask">
+      <h2>Asks</h2>
+    </div>
+    <div class="message todo">
+      <h2>Todos</h2>
+    </div>
+    <div class="message chat">
+      <h2>Chats</h2>
+    </div>
     <%= render @messages %>
   </section>
 </div>
 <div class="hidden" data-controller="dashboard" data-dashboard-channel="<%= @channel %>"></div>
+<div class='nes-container is-rounded is-centered'>
+  <h2>Overlays</h2>
+  <p class='nes-text is-error'>
+    You must leave the Dashboard (this page) open while broadcasting.
+  </p>
+  <p>
+    Use this URL as a browser source in your streaming software.
+  </p>
+  <div class='nes-field is-inline' data-controller='copyable'>
+    <input class='nes-input is-centered' data-target='copyable.value' readonly value='<%= overlay_url(channel: @channel) %>'>
+    &nbsp;
+    <button class='nes-btn is-success' data-action='copyable#copy'>Copy</button>
+  </div>
+</div>

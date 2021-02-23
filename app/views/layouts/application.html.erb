@@ -14,11 +14,26 @@
     <nav>
       <section class='right'>
         <ul>
+          <% if current_user.present? %>
+            <li>
+              <a class='nes-btn is-success' href='<%= overlay_url(channel: current_user.username.downcase) %>' id='overlays' target="_blank">
+                <i class='nes-icon star'></i>
+                <span>Open Overlays</span>
+              </a>
+            </li>
+          <% end %>
           <li>
-            <a class='nes-btn is-primary' href='/sign_in' id='signin'>
-              <i class='nes-icon twitch'></i>
-              <span>Sign In</span>
-            </a>
+            <% unless current_user.present? %>
+              <a class='nes-btn is-primary' href='/sign_in' id='signin'>
+                <i class='nes-icon twitch'></i>
+                <span>Sign In</span>
+              </a>
+            <% else %>
+              <a class="nes-btn is-warning" href='/sign_out' id='signout'>
+                <i class='nes-icon twitch'></i>
+                <span>Sign Out</span>
+              </a>
+            <% end %>
           </li>
         </ul>
       </section>

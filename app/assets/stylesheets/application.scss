@@ -21,11 +21,15 @@ body {
 nav {
   ul {
     list-style: none;
-    li #signin {
-      display: inline-flex;
-      align-items: center;
-      span {
-        margin-left: 1rem;
+    li {
+      display: inline-block;
+      margin-right: 1rem;
+      .nes-btn {
+        display: inline-flex;
+        align-items: center;
+        span {
+          margin-left: 1rem;
+        }
       }
     }
   }
