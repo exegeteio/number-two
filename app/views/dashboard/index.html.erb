@@ -1,9 +1,8 @@
 <%= turbo_stream_from @channel %>
-<h1>Dashboard - <%= @channel %></h1>
+<h1>Dashboard - <%= current_user.username %></h1>
 <div class="dashboard">
   <section id="messages">
     <%= render @messages %>
   </section>
 </div>
-<!-- TODO:  Add a real channel here! -->
-<div class="hidden" data-controller="dashboard" data-dashboard-channel="exegete46"></div>
+<div class="hidden" data-controller="dashboard" data-dashboard-channel="<%= @channel %>"></div>

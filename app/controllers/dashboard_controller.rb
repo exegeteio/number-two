@@ -3,6 +3,7 @@
 # Controller for displaying presenter dashboard and related
 # components.
 class DashboardController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_channel
 
   def index
@@ -13,7 +14,6 @@ class DashboardController < ApplicationController
   private
 
   def set_channel
-    # TODO:  Make this pull from current_user.username after devise is working!
-    @channel = params.require(:channel)
+    @channel = current_user.username.downcase
   end
 end

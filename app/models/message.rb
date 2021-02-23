@@ -31,7 +31,6 @@ class Message < ApplicationRecord
   # Narrow by channel
   scope :for_channel, ->(channel) { where(channel: channel) }
 
-  # TODO:  Add validation!
   validates_presence_of %i[channel content from_username]
 
   # Callback for broadcast messages via HOTwire.

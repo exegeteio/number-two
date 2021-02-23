@@ -4,7 +4,7 @@
 class MessageChannel < ApplicationCable::Channel
   def receive(data)
     Message.create!(
-      channel: data['channel'],
+      channel: current_user.username.downcase,
       from_username: data['from_username'],
       content: data['content'],
       kind: data['kind']&.to_sym,
