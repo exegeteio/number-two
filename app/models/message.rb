@@ -38,7 +38,16 @@ class Message < ApplicationRecord
 
   # Destroy all expired messages.
   after_create :queue_deletion
+  # Destroy all expired messages.
+  after_update :ensure_unique_active_by_kind, if: :active?
+
+  private
+
   def queue_deletion
     DeleteExpiredChatsJob.set(wait: chat_timeout).perform_later
+  end
+
+  def ensure_unique_active_by_kind
+    Message.for_channel(channel).where(kind: kind).where.not(id: id).update(status: :inactive)
   end
 end

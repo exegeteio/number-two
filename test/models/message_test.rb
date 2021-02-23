@@ -49,4 +49,19 @@ class MessageTest < ActiveSupport::TestCase
     travel Message.chat_timeout + 1.second
     assert_not_includes Message.expired, ask
   end
+
+  test 'activating one message inactivates any other active messages' do
+    messages(:ask).update(status: :active)
+    assert messages(:ask_active).inactive?
+  end
+
+  test 'does not inactivate message unless updating message is active' do
+    messages(:ask).update(kind: :todo)
+    assert messages(:todo_active).active?
+  end
+
+  test 'activating does not effect different kinds of message' do
+    messages(:ask).update(status: :active)
+    assert messages(:todo_active).active?
+  end
 end
