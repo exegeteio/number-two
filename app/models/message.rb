@@ -18,7 +18,7 @@ class Message < ApplicationRecord
   include Turbo::Broadcastable
 
   # Set an expiration age for chat messages.
-  class_attribute :chat_timeout, default: 5.minutes
+  class_attribute :chat_timeout, default: 45.seconds
   enum status: %i[active inactive deleted]
   enum kind: %i[chat ask todo]
 
