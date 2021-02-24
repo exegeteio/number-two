@@ -23,7 +23,7 @@ class Message < ApplicationRecord
   enum kind: %i[chat ask todo]
 
   # Default scope by :created_at since id us UUID.
-  default_scope -> { order(:created_at) }
+  default_scope -> { order(created_at: :desc) }
   # Only include messages updated within the last 5 minutes.
   scope :recent, -> { where('updated_at > ?', chat_timeout.ago) }
   # Expired is only for chats older than 5 minutes ago.
@@ -34,7 +34,7 @@ class Message < ApplicationRecord
   validates_presence_of %i[channel content from_username]
 
   # Callback for broadcast messages via HOTwire.
-  broadcasts_to :channel
+  broadcasts_to :channel, inserts_by: :prepend
   # Destroy all expired messages.
   after_create :queue_deletion
   # Destroy all expired messages.
