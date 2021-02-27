@@ -20,8 +20,10 @@ RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSI
 # [Optional] Uncomment this line to install additional gems.
 RUN gem install \
 	bundle-audit \
+	debase \
 	htmlbeautifier \
 	rubocop \
+	ruby-debug-ide \
 	solargraph
 
 WORKDIR /workspace
