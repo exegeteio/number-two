@@ -67,5 +67,7 @@ gem 'devise', '~> 4.7'
 # Devise was complaining about 2.0.  Try to upgrade later.
 gem 'omniauth', '~> 1.9.0'
 gem 'omniauth-twitch', '~> 1.1'
+gem 'sidekiq', '~> 6.1'
 
-gem "sidekiq", "~> 6.1"
+# Lets give this observability thing a try!
+gem 'newrelic_rpm', '~> 6.15', groups: :production

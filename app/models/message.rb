@@ -34,6 +34,8 @@ class Message < ApplicationRecord
   validates_presence_of %i[channel content from_username]
 
   # Callback for broadcast messages via HOTwire.
+  # Broadcast to the channel on the message, which should be
+  # User.username.downcase
   broadcasts_to :channel, inserts_by: :prepend
   # Destroy all expired messages.
   after_create :queue_deletion
