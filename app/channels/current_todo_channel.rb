@@ -2,7 +2,7 @@
 
 class CurrentTodoChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "current_todo_#{params['twitch_channel']}"
+    stream_from "current_todo_#{params['twitch_channel'].downcase}"
   end
 
   def unsubscribed

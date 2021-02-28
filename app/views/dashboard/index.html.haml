@@ -1,7 +1,7 @@
 - content_for :title do
   Dashboard
 
-.dashboard{data: {controller: :dashboard, dashboard: {'client-id': ENV['TWITCH_CLIENT_ID'], channel: current_user.username, token: twitch_token, userid: twitch_userid}}}
+.dashboard{data: {controller: :dashboard, dashboard: {'client-id': ENV['TWITCH_CLIENT_ID'], channel: current_user.username.downcase, token: twitch_token, userid: twitch_userid}}}
 
 .nes-container.is-rounded
   %h2 !ask
