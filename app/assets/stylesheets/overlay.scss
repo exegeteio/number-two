@@ -12,11 +12,29 @@ body.overlay {
     .message {
       background: white;
       margin-bottom: 2rem;
+      display: none;
       .title.kind {
         display: none;
       }
       .controls {
         display: none;
+      }
+      &.active.new {
+        animation: fadein 1.5s ease;
+        display: block;
+      }
+      &.inactive.new {
+        animation: fadein 1.5s ease;
+        animation-direction: reverse;
+        display: none;
+      }
+      @keyframes fadein {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 100;
+        }
       }
     }
     .todo,
@@ -25,9 +43,6 @@ body.overlay {
       display: none;
       left: 1rem;
       width: 33%;
-      &.active {
-        display: block;
-      }
     }
     .ask.active {
       bottom: 1rem;
