@@ -16,6 +16,7 @@
 class Message < ApplicationRecord
   # Enabled broadcasts
   include Turbo::Broadcastable
+  BANNED_USERS = %w[PretzelRocks StreamElements Streamlabs].freeze
 
   # Set an expiration age for chat messages.
   class_attribute :chat_timeout, default: 45.seconds
@@ -41,6 +42,17 @@ class Message < ApplicationRecord
   after_create :queue_deletion
   # Destroy all expired messages.
   after_update :ensure_unique_active_by_kind, if: :active?
+
+  def self.create_message!(channel:, from_username:, content:, kind:)
+    return if BANNED_USERS.include? from_username
+    Message.create!(
+      channel: channel,
+      from_username: from_username,
+      content: content,
+      kind: kind,
+      status: Message.default_status_for(kind)
+    )
+  end
 
   def self.default_status_for(kind)
     default_statuses[kind]
