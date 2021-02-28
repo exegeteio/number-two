@@ -4,6 +4,7 @@
 #
 #  id                     :uuid             not null, primary key
 #  admin                  :boolean          default(FALSE)
+#  custom_css             :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  provider               :string
@@ -28,7 +29,7 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
-      user.username = auth.info.name
+      user.username = auth.info.name.downcase
       # user.password = Devise.friendly_token[0, 20]
       # user.name = auth.info.name
       # user.image = auth.info.image

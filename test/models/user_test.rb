@@ -4,6 +4,7 @@
 #
 #  id                     :uuid             not null, primary key
 #  admin                  :boolean          default(FALSE)
+#  custom_css             :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  provider               :string
