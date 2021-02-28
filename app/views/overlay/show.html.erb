@@ -4,3 +4,7 @@
     <%= render @messages %>
   </div>
 <% end %>
+<%= turbo_stream_from @user %>
+<%= turbo_frame_tag @user do%>
+  <%= render @user %>
+<% end %>

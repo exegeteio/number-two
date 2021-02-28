@@ -1,0 +1,9 @@
+<div id="<%= dom_id(user) %>">
+  <% if user.custom_css.present? %>
+    <style>
+      <%= user.custom_css %>
+    </style>
+  <% else %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+  <% end %>
+</div>
