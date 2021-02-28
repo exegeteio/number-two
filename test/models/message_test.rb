@@ -50,6 +50,11 @@ class MessageTest < ActiveSupport::TestCase
     assert_not_includes Message.expired, ask
   end
 
+  test 'messages are from a banned user' do
+    message = Message.create_message!(channel: 'ChaelCodes', from_username: 'PretzelRocks', content: 'Lol, is a song', kind: 'chat')
+    assert message.nil?
+  end
+
   test 'activating one message inactivates any other active messages' do
     messages(:ask).update(status: :active)
     assert messages(:ask_active).inactive?
