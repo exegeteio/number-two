@@ -1,8 +1,11 @@
 <div id="<%= dom_id(user) %>">
   <% if user.custom_css.present? %>
-    <style>
-      <%= user.custom_css %>
-    </style>
+    <div
+      data-controller="custom-css"
+      data-custom-css-url="<%= user.custom_css %>"
+    >
+      <style data-custom-css-target="style"></style>
+    </div>
   <% else %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
   <% end %>

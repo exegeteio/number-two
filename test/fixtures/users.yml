@@ -34,6 +34,21 @@ default:
 non_default:
   email: non_default@wherever.com
   username: non-default
+
+# It is important to tests that this gist URL is the unsanitized version of
+# :with_deversioned_gist.
+with_gist:
+  email: gist@wherever.com
+  username: gist
+  custom_css: https://gist.githubusercontent.com/exegeteio/d5b60958ee4615e839354a6ee2ead5c7/raw/b2aab565424a5f0aefe810f6b3dafaef01f6f8e3/number-two.css
+
+# It is important to tests that this gist URL is the sanitized version of
+# :with_gist.
+with_deversioned_gist:
+  email: deversioned_gist@wherever.com
+  username: deversioned_gist
+  custom_css: https://gist.githubusercontent.com/exegeteio/d5b60958ee4615e839354a6ee2ead5c7/raw/number-two.css
+
 #
 # two: {}
 # column: value
