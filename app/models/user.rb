@@ -29,6 +29,9 @@ class User < ApplicationRecord
   # Broadcast changes.  Mostly for CSS.
   broadcasts
 
+  # Deversion Gist URL after update.
+  after_update :gist_deversion
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -47,6 +50,10 @@ class User < ApplicationRecord
 
   def login
     @login || username || email
+  end
+
+  def gist_deversion
+    UserGistDeversionJob.perform_later(id)
   end
 
   def self.find_for_database_authentication(warden_conditions)
