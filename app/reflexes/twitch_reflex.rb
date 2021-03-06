@@ -2,7 +2,7 @@
 
 # Class for handling inbound info from twitch.
 class TwitchReflex < ApplicationReflex
-  BANNED_USERS = %w[pretzelrocks nightbot b3_bot].freeze
+  BANNED_USERS = %w[pretzelrocks nightbot b3_bot streamlabs streamelements].freeze
 
   def chat(id, channel, message, message_emotes, username, user_color)
     return unless broadcast_to? channel
@@ -38,7 +38,7 @@ class TwitchReflex < ApplicationReflex
   private
 
   def broadcast_to?(channel)
-    if current_user.admin? || current_user.username == channel
+    if current_user.admin? || current_user.username.downcase == channel.downcase
       true
     else
       Rails.logger.warn(
@@ -68,7 +68,7 @@ class TwitchReflex < ApplicationReflex
       end
     }
     @handlers[:todo] = lambda { |command:, user:, id:, channel:, message:, username:, user_color:|
-      return unless username == user.username
+      return unless username.downcase == user.username.downcase
 
       Todo.create_or_find_by!(message_id: id) do |t|
         t.username = username
