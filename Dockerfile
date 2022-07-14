@@ -3,6 +3,7 @@ FROM ruby:2.7-alpine AS rails
 
 RUN apk add --update --no-cache --quiet \
     build-base \
+    gcompat \
     nodejs-current \
     postgresql-dev \
     sqlite-dev \
@@ -18,7 +19,7 @@ RUN apk add --update --no-cache --quiet \
     build-base \
     nodejs-current \
     postgresql-dev \
-    python2 \
+    python3 \
     sqlite-dev \
     tzdata \
     yarn

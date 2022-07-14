@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '2.7.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.2', '>= 6.1.2.1'
+gem 'rails', '~> 6.1.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
@@ -65,9 +65,11 @@ gem 'dotenv-rails', groups: %i[development test]
 gem 'devise', '~> 4.7'
 
 # Devise was complaining about 2.0.  Try to upgrade later.
-gem 'omniauth', '~> 1.9.0'
+gem 'omniauth'
 gem 'omniauth-twitch', '~> 1.1'
 gem 'sidekiq', '~> 6.1'
 
 # Lets give this observability thing a try!
 gem 'newrelic_rpm', '~> 6.15', groups: :production
+
+gem "nokogiri", "~> 1.13"
